@@ -2,7 +2,7 @@ import Head from "next/head";
 import { ReactElement } from "react";
 import { Layout } from "../../components/layout";
 
-export default function Blog() {
+const Blog = () => {
   return (
     <>
       <Head>
@@ -13,8 +13,10 @@ export default function Blog() {
       <h1>This is the blog</h1>
     </>
   );
-}
+};
 
-Blog.getLayout = function getLayout(page: ReactElement) {
+Blog.getLayout = (page: ReactElement) => {
   return <Layout>{page}</Layout>;
 };
+
+export default Blog;

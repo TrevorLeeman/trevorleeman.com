@@ -3,7 +3,7 @@ import { Layout } from "../components/layout";
 import Link from "next/link";
 import Head from "next/head";
 
-export default function Homepage() {
+const Homepage = () => {
   return (
     <>
       <Head>
@@ -12,13 +12,12 @@ export default function Homepage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>This is the homepage</h1>
-      <Link href="/blog">
-        <a>Blog</a>
-      </Link>
     </>
   );
-}
+};
 
-Homepage.getLayout = function thisis(page: ReactElement) {
+Homepage.getLayout = (page: ReactElement) => {
   return <Layout>{page}</Layout>;
 };
+
+export default Homepage;

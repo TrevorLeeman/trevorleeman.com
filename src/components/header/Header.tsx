@@ -1,5 +1,5 @@
 import Navigation from "../navigation/Navigation";
-import ThemeToggle from "../theme-toggle/ThemeToggle";
+import ThemeToggle from "../themeToggle/ThemeToggle";
 
 const Header = ({ children }: { children?: React.ReactNode }) => {
   return (

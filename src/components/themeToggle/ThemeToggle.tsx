@@ -14,11 +14,11 @@ const ThemeToggle = () => {
   };
 
   return mounted ? (
-    <div
+    <i
       onClick={toggleTheme}
-      className={`rounded-full w-9 h-9 ${
-        darkMode ? "bg-red-700" : "bg-green-700"
-      } inline-block hover:cursor-pointer`}
+      className={`las text-2xl inline-block ${
+        darkMode ? "la-moon" : "la-sun"
+      } hover:cursor-pointer`}
     />
   ) : null;
 };

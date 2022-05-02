@@ -1,8 +1,8 @@
 import React from "react";
-import { Header } from "../header";
-import { Footer } from "../footer";
+import Header from "../header/Header";
+import Footer from "../footer/Footer";
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <Header />
@@ -11,3 +11,5 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     </div>
   );
 };
+
+export default Layout;

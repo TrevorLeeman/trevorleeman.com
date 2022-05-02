@@ -26,7 +26,7 @@ const NavigationItem = ({ navItem }: { navItem: NavigationItem }) => {
   return (
     <li>
       <Link href={navItem.href}>
-        <a target={navItem.target} className="py-4 px-5">
+        <a target={navItem.target} className="py-2 px-3">
           {navItem.label}
         </a>
       </Link>
@@ -34,14 +34,16 @@ const NavigationItem = ({ navItem }: { navItem: NavigationItem }) => {
   );
 };
 
-export const Navigation = () => {
+const Navigation = () => {
   const navigationItems = navigationList.map((navItem, index) => (
     <NavigationItem key={index} navItem={navItem} />
   ));
 
   return (
-    <nav>
-      <ol className="list-none flex flex-nowrap gap-4">{navigationItems}</ol>
+    <nav className="inline-block">
+      <ol className="list-none flex flex-nowrap gap-3">{navigationItems}</ol>
     </nav>
   );
 };
+
+export default Navigation;

@@ -1,12 +1,17 @@
 import React from "react";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
+import MainContent from "../mainContent/MainContent";
+import useDarkMode from "../../hooks/useDarkMode";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  // const [darkMode, _] = useDarkMode();
+  // console.log(darkMode);
+
   return (
-    <div>
+    <div className={`bg-lightPattern min-h-screen dark:bg-darkPattern`}>
       <Header />
-      <main>{children}</main>
+      <MainContent>{children}</MainContent>
       <Footer />
     </div>
   );

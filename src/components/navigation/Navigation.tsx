@@ -24,7 +24,7 @@ const navigationList: NavigationItem[] = [
 
 const NavigationItem = ({ navItem }: { navItem: NavigationItem }) => {
   return (
-    <li>
+    <li className="font-dosis text-xl font-medium">
       <Link href={navItem.href}>
         <a target={navItem.target} className="py-2 px-3">
           {navItem.label}
@@ -40,8 +40,10 @@ const Navigation = () => {
   ));
 
   return (
-    <nav className="inline-block">
-      <ol className="list-none flex flex-nowrap gap-3">{navigationItems}</ol>
+    <nav>
+      <ol className="list-none flex flex-nowrap gap-5 mr-5">
+        {navigationItems}
+      </ol>
     </nav>
   );
 };

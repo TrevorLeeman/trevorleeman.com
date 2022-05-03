@@ -10,7 +10,9 @@ const Homepage = () => {
         <meta name="description" content="Trevor Leeman's resume site" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>This is the homepage</h1>
+      <div>
+        <h1>This is the homepage</h1>
+      </div>
     </>
   );
 };

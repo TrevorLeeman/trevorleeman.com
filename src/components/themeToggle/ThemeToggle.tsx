@@ -3,10 +3,6 @@ import { motion } from "framer-motion";
 import { Sun, Moon } from "phosphor-react";
 import useDarkMode from "../../hooks/useDarkMode";
 
-const ThemeIcon = ({ icon }: { icon: string }) => (
-  <i className={`las text-3xl inline-block ${icon}`} />
-);
-
 const ThemeToggle: React.FunctionComponent = () => {
   const [mounted, setMounted] = useState(false);
   const [darkMode, setDarkMode] = useDarkMode();

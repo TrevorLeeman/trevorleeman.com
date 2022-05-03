@@ -22,6 +22,7 @@ const ThemeToggle: React.FunctionComponent = () => {
     >
       <motion.div
         className="flex gap-2 items-center"
+        initial={{ x: darkMode ? -37 : 0 }}
         animate={{ x: darkMode ? -37 : 0 }}
       >
         <Sun size={30} className="flex-shrink-0" />

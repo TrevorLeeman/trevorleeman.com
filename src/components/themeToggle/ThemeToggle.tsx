@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Sun, Moon } from "phosphor-react";
 import useDarkMode from "../../hooks/useDarkMode";
 
-const ThemeToggle = () => {
+const ThemeIcon = ({ icon }: { icon: string }) => (
+  <i className={`las text-3xl inline-block ${icon}`} />
+);
+
+const ThemeToggle: React.FunctionComponent = () => {
   const [mounted, setMounted] = useState(false);
   const [darkMode, setDarkMode] = useDarkMode();
 
@@ -14,12 +20,18 @@ const ThemeToggle = () => {
   };
 
   return mounted ? (
-    <i
+    <button
+      className="rounded-full w-12 h-12 pl-[7px] overflow-hidden cursor-pointer border-2 border-gray-800 dark:border-gray-200"
       onClick={toggleTheme}
-      className={`las text-2xl inline-block ${
-        darkMode ? "la-moon" : "la-sun"
-      } hover:cursor-pointer`}
-    />
+    >
+      <motion.div
+        className="flex gap-2 items-center"
+        animate={{ x: darkMode ? -37 : 0 }}
+      >
+        <Sun size={30} className="flex-shrink-0" />
+        <Moon size={30} className="flex-shrink-0" />
+      </motion.div>
+    </button>
   ) : null;
 };
 

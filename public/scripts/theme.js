@@ -7,7 +7,9 @@
   window.__setDarkMode = function () {};
   // window.__onThemeChange will be triggered by our React component
   window.__onThemeChange = function (enabled) {
-    window.document.documentElement.className = enabled ? "dark" : "light";
+    var root = window.document.documentElement;
+    root.classList.remove(enabled ? "light" : "dark");
+    root.classList.add(enabled ? "dark" : "light");
     window.__darkMode = enabled;
     window.__setDarkMode(enabled);
     try {

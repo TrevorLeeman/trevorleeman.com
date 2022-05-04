@@ -15,7 +15,7 @@ const Document = () => {
           rel="stylesheet"
         />
       </Head>
-      <body className=" dark:text-gray-200 transition-colors ease-in-out duration-500">
+      <body>
         <Main />
         <NextScript />
       </body>

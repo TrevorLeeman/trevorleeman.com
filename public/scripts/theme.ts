@@ -17,7 +17,9 @@ declare global {
   window.__setDarkMode = () => {};
   // window.__onThemeChange will be triggered by our React component
   window.__onThemeChange = (enabled) => {
-    window.document.documentElement.className = enabled ? "dark" : "light";
+    const root = window.document.documentElement;
+    root.classList.remove(enabled ? "light" : "dark");
+    root.classList.add(enabled ? "dark" : "light");
     window.__darkMode = enabled;
     window.__setDarkMode(enabled);
     try {

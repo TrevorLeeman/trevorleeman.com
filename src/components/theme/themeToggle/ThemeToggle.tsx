@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Sun, Moon } from "phosphor-react";
-import useDarkMode from "../../hooks/useDarkMode";
+import { ThemeContext } from "../themeContext/ThemeContext";
 
 const ThemeToggle: React.FunctionComponent = () => {
   const [mounted, setMounted] = useState(false);
-  const [darkMode, setDarkMode] = useDarkMode();
+  const { darkMode, setDarkMode } = React.useContext(ThemeContext);
 
   useEffect(() => {
     setMounted(true);
@@ -30,6 +30,7 @@ const ThemeToggle: React.FunctionComponent = () => {
       </motion.div>
     </button>
   ) : null;
+  return <></>;
 };
 
 export default ThemeToggle;

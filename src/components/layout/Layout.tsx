@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import MainContent from "../mainContent/MainContent";
-import useDarkMode from "../../hooks/useDarkMode";
+import { ThemeContext } from "../theme/themeContext/ThemeContext";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  // const [darkMode, _] = useDarkMode();
-  // console.log(darkMode);
+  const [mounted, setMounted] = useState(false);
+  const { darkMode } = React.useContext(ThemeContext);
 
-  return (
-    <div className={`bg-lightPattern min-h-screen dark:bg-darkPattern`}>
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return mounted ? (
+    <div
+      className={`min-h-screen bg-lightPattern transition duration-500 dark:text-gray-200 dark:bg-darkPattern`}
+    >
       <Header />
       <MainContent>{children}</MainContent>
       <Footer />
     </div>
-  );
+  ) : null;
 };
 
 export default Layout;

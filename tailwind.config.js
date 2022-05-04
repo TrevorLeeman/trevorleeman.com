@@ -3,6 +3,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      colors: {
+        "theme-purple": "#7708F5",
+      },
       fontFamily: {
         rubik: "rubik",
       },

@@ -17,7 +17,7 @@ const ThemeToggle: React.FunctionComponent = () => {
 
   return mounted ? (
     <button
-      className="rounded-full w-12 h-12 pl-[7px] overflow-hidden cursor-pointer border-2 border-gray-800 dark:border-gray-200"
+      className="rounded-full w-12 h-12 pl-[7px] overflow-hidden cursor-pointer border-2 border-gray-800 dark:border-gray-200 hover:border-theme-purple dark:hover:border-theme-purple"
       onClick={toggleTheme}
     >
       <motion.div

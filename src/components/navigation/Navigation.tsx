@@ -24,7 +24,7 @@ const navigationList: NavigationItem[] = [
 
 const NavigationItem = ({ navItem }: { navItem: NavigationItem }) => {
   return (
-    <li className="font-dosis text-xl font-medium">
+    <li className="font-dosis text-xl font-medium hover:text-theme-purple">
       <Link href={navItem.href}>
         <a target={navItem.target} className="py-2 px-3">
           {navItem.label}

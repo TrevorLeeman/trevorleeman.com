@@ -5,3 +5,10 @@
 * {
   box-sizing: border-box;
 }
+
+@layer base {
+  @font-face {
+    font-family: "Letter Sketch";
+    src: font-url("/fonts/Letter_Sketch.ttf") format("truetype");
+  }
+}

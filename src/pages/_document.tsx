@@ -24,9 +24,9 @@ const Document = () => {
           href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400&display=swap"
           rel="stylesheet"
         /> */}
-        <link rel="preconnect" href="http://fonts.cdnfonts.com/" />
+        <link rel="preconnect" href="https://fonts.cdnfonts.com/" />
         <link
-          href="http://fonts.cdnfonts.com/css/letter-sketch"
+          href="https://fonts.cdnfonts.com/css/letter-sketch"
           rel="stylesheet"
         ></link>
       </Head>

@@ -11,16 +11,18 @@ const Homepage = () => {
         <meta name="description" content="Trevor Leeman's resume site" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col items-center justify-center flex-grow pb-52">
+      <div className="flex flex-grow flex-col items-center justify-center pb-52">
         <div className="flex flex-col pb-7">
-          <h1 className="text-5xl">Hi, my name is</h1>
+          <h1 className="text-xl font-semibold md:text-3xl">Hi, my name is</h1>
           <h1>
-            <span className="font-bold text-9xl text-theme-purple dark:text-theme-pink">
+            <span className="text-7xl font-bold text-theme-purple dark:text-theme-pink md:text-9xl">
               Trevor
             </span>
-            <span className="text-2xl"> and</span>
+            <span className="text-md font-semibold md:text-xl"> and</span>
           </h1>
-          <h1 className="text-5xl">I'M A FRONTEND DEVELOPER</h1>
+          <h1 className="font-letter-sketch text-2xl md:text-5xl">
+            I'M A FRONTEND ENGINEER
+          </h1>
         </div>
         <Socials />
       </div>

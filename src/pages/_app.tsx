@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Script from "next/script";
 import "../styles/globals.css";
-import { ThemeProvider } from "../components/theme/themeContext/ThemeContext";
+import { ThemeProvider } from "../components/theme/ThemeContext";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;

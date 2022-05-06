@@ -4,12 +4,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "theme-purple": "#7708F5",
+        "theme-black": "#121212",
+        "theme-white": "#EFEFEF",
+        "theme-pink": "#D1345B",
+        "theme-green": "#00916E",
+        "theme-purple": "#623CEA",
       },
       fontFamily: {
+        default:
+          'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
         rubik: "rubik",
+        teko: "Teko, sans-serif",
       },
       backgroundImage: {
+        enchantmentsGoatHero: "url('/Enchantments_Goat.jpg')",
         lightPattern:
           "repeating-linear-gradient(90deg, rgba(198, 198, 198,0.05) 0px, rgba(198, 198, 198,0.05) 1px,transparent 1px, transparent 5px),repeating-linear-gradient(0deg, rgba(198, 198, 198,0.05) 0px, rgba(198, 198, 198,0.05) 1px,transparent 1px, transparent 5px),repeating-linear-gradient(0deg, rgba(198, 198, 198,0.06) 0px, rgba(198, 198, 198,0.06) 1px,transparent 1px, transparent 15px),repeating-linear-gradient(90deg, rgba(198, 198, 198,0.06) 0px, rgba(198, 198, 198,0.06) 1px,transparent 1px, transparent 15px),linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));",
         darkPattern:

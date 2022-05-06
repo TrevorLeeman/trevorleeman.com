@@ -24,6 +24,12 @@ const Document = () => {
           href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400&display=swap"
           rel="stylesheet"
         /> */}
+        <link
+          rel="preload"
+          href="/fonts/Letter_Sketch.ttf"
+          as="font"
+          crossOrigin=""
+        />
       </Head>
       <body>
         <Main />

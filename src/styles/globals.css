@@ -9,6 +9,9 @@
 @layer base {
   @font-face {
     font-family: "Letter Sketch";
-    src: font-url("/fonts/Letter_Sketch.ttf") format("truetype");
+    src: url("/fonts/Letter_Sketch.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
   }
 }

@@ -17,11 +17,11 @@ const ThemeToggle: React.FunctionComponent = () => {
 
   return mounted ? (
     <button
-      className="rounded-full w-12 h-12 pl-[7px] overflow-hidden cursor-pointer border-2 border-theme-black dark:border-theme-white"
+      className="h-12 w-12 cursor-pointer overflow-hidden rounded-full border-2 border-theme-black pl-[7px] dark:border-theme-white"
       onClick={toggleTheme}
     >
       <motion.div
-        className="flex gap-2 items-center"
+        className="flex items-center gap-2"
         initial={{ x: darkMode ? -37 : 0 }}
         animate={{ x: darkMode ? -37 : 0 }}
       >
@@ -30,7 +30,6 @@ const ThemeToggle: React.FunctionComponent = () => {
       </motion.div>
     </button>
   ) : null;
-  return <></>;
 };
 
 export default ThemeToggle;

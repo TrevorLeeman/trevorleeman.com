@@ -29,7 +29,10 @@ const ThemeToggle: React.FunctionComponent = () => {
         <Moon size={30} className="flex-shrink-0" />
       </motion.div>
     </button>
-  ) : null;
+  ) : (
+    // Placeholder to prevent layout shift
+    <div className="h-12 w-12" />
+  );
 };
 
 export default ThemeToggle;

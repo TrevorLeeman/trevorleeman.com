@@ -15,7 +15,7 @@ const Homepage = () => {
         <div className="flex flex-col pb-7">
           <h1 className="text-xl font-semibold md:text-3xl">Hi, my name is</h1>
           <h1>
-            <span className="text-7xl font-bold text-theme-purple dark:text-theme-pink md:text-9xl">
+            <span className=" text-7xl font-bold text-theme-purple dark:text-theme-pink md:text-9xl">
               Trevor
             </span>
             <span className="text-md font-semibold md:text-xl"> and</span>

@@ -30,6 +30,7 @@ const Document = () => {
           as="font"
           crossOrigin=""
         />
+        <link rel="preload" href="/scripts/theme.js" as="script" />
       </Head>
       <body>
         <Main />

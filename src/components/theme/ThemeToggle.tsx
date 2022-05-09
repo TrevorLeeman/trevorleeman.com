@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Sun, Moon } from "phosphor-react";
-import { ThemeContext } from "./ThemeContext";
+import { useTheme } from "next-themes";
 
 const ThemeToggle: React.FunctionComponent = () => {
   const [mounted, setMounted] = useState(false);
-  const { darkMode, setDarkMode } = React.useContext(ThemeContext);
+  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const toggleTheme = (event: React.MouseEvent) => {
-    setDarkMode(!darkMode);
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
   return mounted ? (
@@ -23,8 +23,8 @@ const ThemeToggle: React.FunctionComponent = () => {
     >
       <motion.div
         className="flex items-center gap-2"
-        initial={{ x: darkMode ? -37 : 0 }}
-        animate={{ x: darkMode ? -37 : 0 }}
+        initial={{ x: resolvedTheme === "dark" ? -37 : 0 }}
+        animate={{ x: resolvedTheme === "dark" ? -37 : 0 }}
       >
         <Sun size={30} className="flex-shrink-0" />
         <Moon size={30} className="flex-shrink-0" />

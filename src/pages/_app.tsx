@@ -3,7 +3,8 @@ import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Script from "next/script";
 import "../styles/globals.css";
-import { ThemeProvider } from "../components/theme/ThemeContext";
+import { ThemeProvider } from "next-themes";
+// import { ThemeProvider } from "../components/theme/ThemeContext";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -19,8 +20,10 @@ const NextApp = ({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <>
-      <Script src="/scripts/theme.js" strategy="beforeInteractive" />
-      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+      {/* <Script src="/scripts/theme.js" strategy="beforeInteractive" /> */}
+      <ThemeProvider attribute="class">
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeProvider>
     </>
   );
 };

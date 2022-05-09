@@ -7,9 +7,7 @@ const Homepage = () => {
   return (
     <>
       <Head>
-        <title>Home</title>
-        <meta name="description" content="Trevor Leeman's resume site" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Trevor Leeman</title>
       </Head>
       <div className="flex flex-grow flex-col items-center justify-center pb-52">
         <div className="flex flex-col pb-7">

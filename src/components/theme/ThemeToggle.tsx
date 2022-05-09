@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Sun, Moon } from "phosphor-react";
-import { ThemeContext } from "./ThemeContext";
 import { useTheme } from "next-themes";
 
 const ThemeToggle: React.FunctionComponent = () => {

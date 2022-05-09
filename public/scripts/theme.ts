@@ -13,15 +13,17 @@ declare global {
 }
 
 (() => {
+  const setTheme = (enabled: boolean) => {
+    window.document.documentElement.className = enabled ? "dark" : "light";
+    window.__darkMode = enabled;
+    window.__setDarkMode(enabled);
+  };
+
   // window.__setDarkMode will be overwritten in our React component
   window.__setDarkMode = () => {};
   // window.__onThemeChange will be triggered by our React component
   window.__onThemeChange = (enabled) => {
-    const root = window.document.documentElement;
-    root.classList.remove(enabled ? "light" : "dark");
-    root.classList.add(enabled ? "dark" : "light");
-    window.__darkMode = enabled;
-    window.__setDarkMode(enabled);
+    setTheme(enabled);
     try {
       localStorage.setItem("darkMode", JSON.stringify(enabled));
     } catch (err) {}
@@ -38,7 +40,5 @@ declare global {
     darkModeEnabled = darkStorage && JSON.parse(darkStorage);
   } catch (err) {}
   // initialize preferredTheme
-  window.__onThemeChange(
-    darkStorage === null ? darkQuery.matches : darkModeEnabled
-  );
+  setTheme(darkStorage === null ? darkQuery.matches : darkModeEnabled);
 })();

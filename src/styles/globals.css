@@ -1,17 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-* {
-  box-sizing: border-box;
-}
-
-@layer base {
-  @font-face {
-    font-family: "Letter Sketch";
-    src: url("/fonts/Letter_Sketch.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-  }
-}

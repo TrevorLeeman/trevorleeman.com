@@ -24,7 +24,7 @@ const navigationList: NavigationItem[] = [
 
 const NavigationItem = ({ navItem }: { navItem: NavigationItem }) => {
   return (
-    <li className="font-dosis text-xl font-medium hover:text-theme-purple">
+    <li className="text-xl font-medium hover:text-theme-purple">
       <Link href={navItem.href}>
         <a target={navItem.target} className="py-2 px-3">
           {navItem.label}
@@ -41,7 +41,7 @@ const Navigation = () => {
 
   return (
     <nav>
-      <ol className="list-none flex flex-nowrap gap-5 mr-5">
+      <ol className="mr-5 flex list-none flex-nowrap gap-5">
         {navigationItems}
       </ol>
     </nav>

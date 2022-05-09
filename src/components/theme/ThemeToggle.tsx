@@ -19,6 +19,7 @@ const ThemeToggle: React.FunctionComponent = () => {
     <button
       className="h-12 w-12 cursor-pointer overflow-hidden rounded-full border-2 border-theme-black pl-[7px] dark:border-theme-white"
       onClick={toggleTheme}
+      aria-label="theme-toggle"
     >
       <motion.div
         className="flex items-center gap-2"

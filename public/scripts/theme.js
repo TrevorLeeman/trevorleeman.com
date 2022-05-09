@@ -30,5 +30,5 @@
   // } catch (err) {}
   // // initialize preferredTheme
   // setTheme(darkStorage === null ? darkQuery.matches : darkModeEnabled);
-  document.querySelector("html").classList.add("dark");
+  // document.querySelector("html").classList.add("dark");
 })();

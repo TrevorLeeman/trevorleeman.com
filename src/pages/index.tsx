@@ -20,9 +20,7 @@ const Homepage = () => {
             </span>
             <span className="text-md font-semibold md:text-xl"> and</span>
           </h1>
-          <h1 className="font-letter-sketch text-2xl md:text-5xl">
-            I'M A FRONTEND ENGINEER
-          </h1>
+          <h1 className="text-2xl md:text-4xl">I'M A FRONTEND ENGINEER</h1>
         </div>
         <Socials />
       </div>

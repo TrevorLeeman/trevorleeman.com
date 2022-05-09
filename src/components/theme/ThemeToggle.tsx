@@ -6,15 +6,14 @@ import { useTheme } from "next-themes";
 
 const ThemeToggle: React.FunctionComponent = () => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const toggleTheme = (event: React.MouseEvent) => {
-    console.log(theme);
-    setTheme(theme === "dark" ? "light" : "dark");
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
   return mounted ? (
@@ -25,8 +24,8 @@ const ThemeToggle: React.FunctionComponent = () => {
     >
       <motion.div
         className="flex items-center gap-2"
-        initial={{ x: theme === "dark" ? -37 : 0 }}
-        animate={{ x: theme === "dark" ? -37 : 0 }}
+        initial={{ x: resolvedTheme === "dark" ? -37 : 0 }}
+        animate={{ x: resolvedTheme === "dark" ? -37 : 0 }}
       >
         <Sun size={30} className="flex-shrink-0" />
         <Moon size={30} className="flex-shrink-0" />

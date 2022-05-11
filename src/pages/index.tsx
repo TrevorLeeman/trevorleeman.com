@@ -14,6 +14,7 @@ const Homepage = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={CANONICAL_URL} />
         <link rel="canonical" href={CANONICAL_URL} />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className="flex flex-grow flex-col items-center justify-center pb-52">
         <h1 className="flex flex-col pb-7 font-abel">

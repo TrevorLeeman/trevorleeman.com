@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript } from 'next/document';
 const Document = () => {
   const DESCRIPTION =
     'Trevor Leeman is a software engineer based out of Seattle, WA. His primary focus is on Frontend Engineering using React, NextJS, TypeScript, and CSS.';
-  const OG_IMAGE_URL = 'https://imgur.com/a/flvPVwA';
+  const OG_IMAGE_URL = 'http://imgur.com/a/flvPVwA';
 
   return (
     <Html lang="en">
@@ -12,7 +12,7 @@ const Document = () => {
         <meta name="description" content={DESCRIPTION} />
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:image" content={OG_IMAGE_URL} />
-        <meta property="og:image:secure_url" content={OG_IMAGE_URL} />
+        <meta property="og:image:url" content={OG_IMAGE_URL} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="twitter:image" content={OG_IMAGE_URL} />

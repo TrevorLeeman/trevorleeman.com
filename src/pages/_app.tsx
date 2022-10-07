@@ -1,10 +1,8 @@
-import type { ReactElement, ReactNode } from "react";
-import type { NextPage } from "next";
-import type { AppProps } from "next/app";
-import Script from "next/script";
-import "../styles/globals.css";
-import { ThemeProvider } from "next-themes";
-// import { ThemeProvider } from "../components/theme/ThemeContext";
+import type { ReactElement, ReactNode } from 'react';
+import type { NextPage } from 'next';
+import type { AppProps } from 'next/app';
+import '../styles/globals.css';
+import { ThemeProvider } from 'next-themes';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -16,14 +14,11 @@ type AppPropsWithLayout = AppProps & {
 
 const NextApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   // Use the layout defined at the page level, if available
-  const getLayout = Component.getLayout ?? ((page) => page);
+  const getLayout = Component.getLayout ?? (page => page);
 
   return (
     <>
-      {/* <Script src="/scripts/theme.js" strategy="beforeInteractive" /> */}
-      <ThemeProvider attribute="class">
-        {getLayout(<Component {...pageProps} />)}
-      </ThemeProvider>
+      <ThemeProvider attribute="class">{getLayout(<Component {...pageProps} />)}</ThemeProvider>
     </>
   );
 };

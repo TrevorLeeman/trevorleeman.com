@@ -1,7 +1,9 @@
 import type { ReactElement } from 'react';
-import Layout from '../components/layout/Layout';
 import Head from 'next/head';
-import Socials from '../components/socials/Socials';
+import Socials from '../components/homepage/socials/Socials';
+import IntroMessage from '../components/homepage/introMessage/IntroMessage';
+import Header from '../components/header/Header';
+import HomepageLayout from '../components/layout/HomepageLayout';
 
 const Homepage = () => {
   const CANONICAL_URL = 'https://www.trevorleeman.com';
@@ -16,25 +18,22 @@ const Homepage = () => {
         <link rel="canonical" href={CANONICAL_URL} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="flex flex-grow flex-col items-center justify-center pb-52">
-        <h1 className="flex flex-col pb-7 font-abel">
-          <span className="text-2xl md:text-4xl">Hi, my name is</span>
-          <span>
-            <span className="font-default text-8xl font-bold text-theme-purple dark:text-theme-pink md:text-[9.5rem]">
-              Trevor
-            </span>
-            <span className="text-lg md:text-2xl"> and</span>
-          </span>
-          <span className="text-3xl font-semibold md:text-5xl">I'M A FRONTEND ENGINEER</span>
-        </h1>
-        <Socials />
+      <div className="min-h-screen">
+        <Header />
+        <section className="mt-24 flex flex-col items-center justify-center">
+          <IntroMessage />
+          <Socials />
+        </section>
       </div>
+      <section className="mt-auto flex flex-col items-center justify-center">
+        <h2 className="font-default text-4xl font-bold">Featured Personal Projects</h2>
+      </section>
     </>
   );
 };
 
 Homepage.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>;
+  return <HomepageLayout>{page}</HomepageLayout>;
 };
 
 export default Homepage;

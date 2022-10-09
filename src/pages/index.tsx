@@ -1,13 +1,19 @@
-import type { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import Head from 'next/head';
 import Socials from '../components/homepage/socials/Socials';
 import IntroMessage from '../components/homepage/introMessage/IntroMessage';
 import Header from '../components/header/Header';
 import HomepageLayout from '../components/layout/HomepageLayout';
+import ProjectCard from '../components/projectCard/ProjectCard';
+import ProjectCardImage from '../components/projectCard/Image';
+import ProjectCardInfo from '../components/projectCard/Info';
+import ProjectCardTechIcon from '../components/projectCard/TechIcon';
+import { v4 as uuid } from 'uuid';
+import FeaturedPersonalProjectsWaveTop from '../components/homepage/waves/FeaturedPersonalProjectsTop';
+
+const CANONICAL_URL = 'https://www.trevorleeman.com';
 
 const Homepage = () => {
-  const CANONICAL_URL = 'https://www.trevorleeman.com';
-
   return (
     <>
       <Head>
@@ -18,15 +24,49 @@ const Homepage = () => {
         <link rel="canonical" href={CANONICAL_URL} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="min-h-screen">
-        <Header />
-        <section className="mt-24 flex flex-col items-center justify-center">
-          <IntroMessage />
-          <Socials />
-        </section>
+      <div className="flex h-full flex-col items-center overflow-hidden">
+        <div className="flex w-full flex-grow flex-col xl:max-w-screen-lg">
+          <Header />
+          <div className="mb-14 flex flex-grow flex-col items-center justify-center sm:mb-0">
+            <IntroMessage />
+            <Socials />
+          </div>
+        </div>
+        <FeaturedPersonalProjectsWaveTop />
       </div>
-      <section className="mt-auto flex flex-col items-center justify-center">
-        <h2 className="font-default text-4xl font-bold">Featured Personal Projects</h2>
+      <section
+        id="projects"
+        className="z-10 flex flex-col items-center justify-center bg-gray-800 pb-8 dark:bg-gray-300 "
+      >
+        <h2 className="py-8 px-4 text-center font-default text-4xl font-bold text-theme-white dark:text-theme-black sm:text-6xl lg:text-8xl">
+          Featured Personal Projects
+        </h2>
+        <div className="grid w-full gap-8 px-8 lg:grid-cols-2 xl:max-w-screen-lg xl:px-0">
+          <ProjectCard>
+            <ProjectCardImage src="https://i.imgur.com/FwHcrj6.png" alt="Tic Tac Toe" />
+            <ProjectCardInfo
+              purpose="Progressive Web App"
+              title="Tic Tac Toe"
+              description="A delve into browser based game development and PWAs. Game board expandable to sizes bigger than 3x3. Try all 3 game modes!"
+              liveLink="https://tic-tac-toe.trevorleeman.com"
+              codeLink="https://github.com/TrevorLeeman/react-tic-tac-toe"
+              techIcons={[
+                <ProjectCardTechIcon src="/icons/javascript.svg" title="JavaScript" key={uuid()} />,
+                <ProjectCardTechIcon src="/icons/react.svg" title="React" key={uuid()} />,
+                <ProjectCardTechIcon src="/icons/styled-components.svg" title="Styled Components" key={uuid()} />,
+                <ProjectCardTechIcon src="/icons/scss.svg" title="SCSS" key={uuid()} />,
+              ]}
+            />
+          </ProjectCard>
+          {/* <ProjectCard>
+            <ProjectCardImage src="https://i.imgur.com/FwHcrj6.png" alt="Tic Tac Toe" />
+            <ProjectCardInfo purpose="" title="" description="" liveLink="" codeLink="" />
+          </ProjectCard>
+          <ProjectCard>
+            <ProjectCardImage src="https://i.imgur.com/FwHcrj6.png" alt="Tic Tac Toe" />
+            <ProjectCardInfo purpose="" title="" description="" liveLink="" codeLink="" />
+          </ProjectCard> */}
+        </div>
       </section>
     </>
   );

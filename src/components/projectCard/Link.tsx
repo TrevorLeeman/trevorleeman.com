@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 type ProjectCardLinkProps = {
   children: React.ReactNode;
-  href: string;
+  href: string | undefined;
 };
 
 const ProjectCardLink = ({ children, href }: ProjectCardLinkProps) =>
@@ -10,7 +10,7 @@ const ProjectCardLink = ({ children, href }: ProjectCardLinkProps) =>
     <Link href={href}>
       <a
         target="_blank"
-        className="block w-fit rounded-full bg-theme-purple p-6 py-4 font-semibold text-theme-white hover:brightness-110 dark:bg-theme-pink"
+        className="block w-fit rounded-lg bg-theme-purple px-4 py-3 text-lg font-semibold text-theme-white hover:brightness-110 dark:bg-theme-pink md:px-6 md:py-4"
       >
         {children}
       </a>

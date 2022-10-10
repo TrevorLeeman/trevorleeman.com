@@ -1,6 +1,6 @@
 const FeaturedPersonalProjectsWaveTop = () => (
   <div className="w-full">
-    <div className="overflow-hidden">
+    <div className="overflow-hidden pt-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
@@ -13,7 +13,7 @@ const FeaturedPersonalProjectsWaveTop = () => (
         ></path>
       </svg>
     </div>
-    <div className="z-10 h-14 bg-theme-featured-personal-projects-light dark:bg-theme-featured-personal-projects-dark sm:h-0" />
+    <div className="z-10 h-10 bg-theme-featured-personal-projects-light dark:bg-theme-featured-personal-projects-dark sm:h-0" />
   </div>
 );
 

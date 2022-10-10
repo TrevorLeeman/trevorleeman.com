@@ -10,7 +10,8 @@ module.exports = {
         'theme-green': '#00916E',
         'theme-purple': '#623CEA',
         'theme-featured-personal-projects-light': '#1f2937',
-        'theme-featured-personal-projects-dark': '#D1D5DB',
+        'theme-featured-personal-projects-dark': '#1f2937',
+        // 'theme-featured-personal-projects-dark': '#D1D5DB',
       },
       fontFamily: {
         default:

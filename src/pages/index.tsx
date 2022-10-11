@@ -40,7 +40,7 @@ const Homepage = () => {
         className="z-10 flex flex-col items-center justify-center bg-theme-featured-personal-projects-light px-3 pb-12 dark:bg-theme-featured-personal-projects-dark 4xs:px-5  3xs:px-6 md:pb-20"
         // style={{ filter: 'drop-shadow(0 3px 6px rgba(0,0,0,0.16)) drop-shadow(0 3px 6px rgba(0,0,0,0.23))' }}
       >
-        <h2 className="py-8 text-center font-default text-4xl font-extrabold tracking-wide text-theme-white 3xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+        <h2 className="py-8 text-center font-default text-4xl font-extrabold tracking-wide text-theme-white drop-shadow-lg 4xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
           Featured Personal Projects
         </h2>
         <div className="grid w-full gap-3 4xs:gap-5 3xs:gap-6 lg:grid-cols-2 xl:max-w-screen-lg xl:px-0">

@@ -4,10 +4,10 @@ import Socials from '../components/homepage/socials/Socials';
 import IntroMessage from '../components/homepage/introMessage/IntroMessage';
 import Header from '../components/header/Header';
 import HomepageLayout from '../components/layout/HomepageLayout';
-import ProjectCard from '../components/projectCard/ProjectCard';
-import ProjectCardImage from '../components/projectCard/Image';
-import ProjectCardInfo from '../components/projectCard/Info';
-import ProjectCardTechIcon from '../components/projectCard/TechIcon';
+import ProjectCard from '../components/homepage/projectCard/ProjectCard';
+import ProjectCardImage from '../components/homepage/projectCard/Image';
+import ProjectCardInfo from '../components/homepage/projectCard/Info';
+import ProjectCardTechIcon from '../components/homepage/projectCard/TechIcon';
 import { v4 as uuid } from 'uuid';
 import FeaturedPersonalProjectsWaveTop from '../components/homepage/waves/FeaturedPersonalProjectsTop';
 import FeaturedPersonalProjectsWaveBottom from '../components/homepage/waves/FeaturePersonalProjectsBottom';
@@ -25,7 +25,7 @@ const Homepage = () => {
         <link rel="canonical" href={CANONICAL_URL} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="flex h-full flex-col items-center">
+      <div className="flex min-h-full flex-col items-center">
         <div className="flex w-full flex-grow flex-col xl:max-w-screen-lg">
           <Header />
           <div className="mb-14 flex flex-grow flex-col items-center justify-center sm:mb-0 xl:mt-16">
@@ -37,13 +37,13 @@ const Homepage = () => {
       </div>
       <section
         id="projects"
-        className="z-10 flex flex-col items-center justify-center bg-theme-featured-personal-projects-light pb-20 dark:bg-theme-featured-personal-projects-dark"
+        className="z-10 flex flex-col items-center justify-center bg-theme-featured-personal-projects-light px-3 pb-12 dark:bg-theme-featured-personal-projects-dark 4xs:px-5  3xs:px-6 md:pb-20"
         // style={{ filter: 'drop-shadow(0 3px 6px rgba(0,0,0,0.16)) drop-shadow(0 3px 6px rgba(0,0,0,0.23))' }}
       >
-        <h2 className="py-8 px-4 text-center font-default text-4xl font-extrabold tracking-wide text-theme-white sm:text-6xl lg:text-8xl">
+        <h2 className="py-8 text-center font-default text-4xl font-extrabold tracking-wide text-theme-white 3xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
           Featured Personal Projects
         </h2>
-        <div className="grid w-full gap-8 px-8 lg:grid-cols-2 xl:max-w-screen-lg xl:px-0">
+        <div className="grid w-full gap-3 4xs:gap-5 3xs:gap-6 lg:grid-cols-2 xl:max-w-screen-lg xl:px-0">
           <ProjectCard>
             <ProjectCardImage src="https://i.imgur.com/4pWNat5.png" alt="Coming Soon" />
             <ProjectCardInfo

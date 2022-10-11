@@ -1,4 +1,4 @@
-import Navigation from '../navigation/Navigation';
+import Navigation from './Navigation';
 import ThemeToggle from '../theme/ThemeToggle';
 
 const Header = ({ children }: { children?: React.ReactNode }) => {

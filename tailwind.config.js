@@ -18,9 +18,8 @@ module.exports = {
         'theme-pink': '#D1345B',
         'theme-green': '#00916E',
         'theme-purple': '#623CEA',
-        'theme-featured-personal-projects-light': '#1f2937',
-        'theme-featured-personal-projects-dark': '#1f2937',
-        // 'theme-featured-personal-projects-dark': '#D1D5DB',
+        'theme-featured-personal-projects-light': 'rgb(30,41,59)',
+        'theme-featured-personal-projects-dark': 'rgb(30,41,59)',
       },
       fontFamily: {
         default:

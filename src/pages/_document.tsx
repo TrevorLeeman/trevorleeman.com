@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript } from 'next/document';
 const Document = () => {
   const DESCRIPTION =
     'Trevor Leeman is a software engineer based out of Seattle, WA. His primary focus is on Frontend Engineering using React, NextJS, TypeScript, and CSS.';
-  const OG_IMAGE_URL = 'https://i.imgur.com/5JkkVEO.png';
+  const OG_IMAGE_URL = 'https://i.imgur.com/gUngB8v.png';
 
   return (
     <Html lang="en">

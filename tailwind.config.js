@@ -18,6 +18,7 @@ module.exports = {
         'theme-pink': '#D1345B',
         'theme-green': '#00916E',
         'theme-purple': '#623CEA',
+        'theme-light-blue-gray': 'rgb(207,216,220)',
         'theme-featured-personal-projects-light': 'rgb(30,41,59)',
         'theme-featured-personal-projects-dark': 'rgb(30,41,59)',
       },

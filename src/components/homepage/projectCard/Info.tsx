@@ -11,7 +11,7 @@ type ProjectCardInfoProps = {
 
 const ProjectCardInfo = ({ purpose, title, description, liveLink, codeLink, techIcons }: ProjectCardInfoProps) => {
   return (
-    <div className="flex flex-grow flex-col justify-between bg-theme-white p-6 dark:bg-gray-300 dark:text-theme-black">
+    <div className="flex flex-grow flex-col justify-between bg-theme-white p-6 dark:bg-theme-light-blue-gray dark:text-theme-black">
       <div>
         <p className="text-sm font-semibold sm:text-lg">{purpose}</p>
         <h3 className="pb-2 text-2xl font-bold text-theme-purple dark:text-theme-pink sm:text-3xl">{title}</h3>

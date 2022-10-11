@@ -4,16 +4,13 @@ import Footer from '../footer/Footer';
 import MainContent from '../mainContent/MainContent';
 import DarkModeDefaults from '../darkModeDefaults/DarkModeDefaults';
 
-const Layout: React.FC = ({ children }) => {
+const HomepageLayout: React.FC = ({ children }) => {
   return (
     <DarkModeDefaults>
-      <div className="flex min-h-screen flex-col">
-        <Header />
-        <MainContent>{children}</MainContent>
-      </div>
+      <MainContent>{children}</MainContent>
       <Footer />
     </DarkModeDefaults>
   );
 };
 
-export default Layout;
+export default HomepageLayout;

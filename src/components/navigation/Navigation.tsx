@@ -1,30 +1,26 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
 
 type NavigationItem = {
   label: string;
   href: string;
-  target?: "_blank";
+  target?: '_blank';
 };
 
 const navigationList: NavigationItem[] = [
+  // {
+  //   label: 'Home',
+  //   href: '/',
+  // },
   {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Portfolio",
-    href: "/#portfolio",
-  },
-  {
-    label: "Blog",
-    href: "/blog",
+    label: 'Projects',
+    href: '/#projects',
   },
 ];
 
 const NavigationItem = ({ navItem }: { navItem: NavigationItem }) => {
   return (
-    <li className="text-xl font-medium hover:text-theme-purple">
+    <li className="font-abel text-xl font-medium hover:text-theme-purple dark:hover:text-theme-pink sm:text-3xl">
       <Link href={navItem.href}>
         <a target={navItem.target} className="py-2 px-3">
           {navItem.label}
@@ -35,14 +31,12 @@ const NavigationItem = ({ navItem }: { navItem: NavigationItem }) => {
 };
 
 const Navigation = () => {
-  const navigationItems = navigationList.map((navItem, index) => (
-    <NavigationItem key={index} navItem={navItem} />
-  ));
-
   return (
     <nav>
-      <ol className="mr-5 flex list-none flex-nowrap gap-5">
-        {navigationItems}
+      <ol className="mr-6 flex list-none flex-nowrap gap-6 sm:mr-12 sm:gap-12">
+        {navigationList.map((navItem, index) => (
+          <NavigationItem key={index} navItem={navItem} />
+        ))}
       </ol>
     </nav>
   );

@@ -1,11 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const MainContent: React.FunctionComponent = ({ children }) => {
-  return (
-    <main className="flex w-full max-w-screen-xl mx-auto flex-grow">
-      {children}
-    </main>
-  );
+  return <main className="mx-auto h-full w-full">{children}</main>;
 };
 
 export default MainContent;

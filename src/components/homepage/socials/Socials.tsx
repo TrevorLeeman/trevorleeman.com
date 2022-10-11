@@ -9,7 +9,7 @@ const SocialLink = ({ href, label, children }: { href: string; label: string; ch
     rel="noreferrer"
     aria-label={label}
     whileHover={{ scale: 1.1 }}
-    className="inline-block w-8 md:w-10 lg:w-14"
+    className="inline-block w-9 3xs:w-10 sm:w-11 lg:w-14"
   >
     {children}
   </motion.a>

@@ -21,7 +21,7 @@ const ProjectCardInfo = ({ purpose, title, description, liveLink, codeLink, tech
           {techIcons}
         </div>
       </div>
-      <div className="flex gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         <ProjectCardLink href={liveLink}>Visit Site</ProjectCardLink>
         <ProjectCardLink href={codeLink}>View Source</ProjectCardLink>
       </div>

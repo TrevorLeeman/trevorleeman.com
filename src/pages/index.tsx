@@ -25,7 +25,7 @@ const Homepage = () => {
         <link rel="canonical" href={CANONICAL_URL} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="flex h-full flex-col items-center sm:h-auto">
+      <div className="flex h-full flex-col items-center">
         <div className="flex w-full flex-grow flex-col xl:max-w-screen-lg">
           <Header />
           <div className="mb-14 flex flex-grow flex-col items-center justify-center sm:mb-0 xl:mt-16">

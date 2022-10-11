@@ -37,7 +37,7 @@ const Homepage = () => {
       </div>
       <section
         id="projects"
-        className="z-10 flex flex-col items-center justify-center bg-theme-featured-personal-projects-light pb-32 dark:bg-theme-featured-personal-projects-dark"
+        className="z-10 flex flex-col items-center justify-center bg-theme-featured-personal-projects-light pb-20 dark:bg-theme-featured-personal-projects-dark"
         // style={{ filter: 'drop-shadow(0 3px 6px rgba(0,0,0,0.16)) drop-shadow(0 3px 6px rgba(0,0,0,0.23))' }}
       >
         <h2 className="py-8 px-4 text-center font-default text-4xl font-extrabold tracking-wide text-theme-white sm:text-6xl lg:text-8xl">
@@ -45,7 +45,7 @@ const Homepage = () => {
         </h2>
         <div className="grid w-full gap-8 px-8 lg:grid-cols-2 xl:max-w-screen-lg xl:px-0">
           <ProjectCard>
-            <ProjectCardImage src="/coming_soon.png" alt="Coming Soon" />
+            <ProjectCardImage src="https://i.imgur.com/4pWNat5.png" alt="Coming Soon" />
             <ProjectCardInfo
               purpose="MMORPG Trading Tool"
               title="OSRS Prices (WIP)"

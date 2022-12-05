@@ -21,10 +21,8 @@ const navigationList: NavigationItem[] = [
 const NavigationItem = ({ navItem }: { navItem: NavigationItem }) => {
   return (
     <li className="font-abel text-xl font-medium hover:text-theme-purple dark:hover:text-theme-pink sm:text-3xl">
-      <Link href={navItem.href}>
-        <a target={navItem.target} className="py-2 px-3">
-          {navItem.label}
-        </a>
+      <Link href={navItem.href} target={navItem.target} scroll={false} className="py-2 px-3">
+        {navItem.label}
       </Link>
     </li>
   );

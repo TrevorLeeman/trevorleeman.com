@@ -5,8 +5,6 @@ import React, { ReactNode } from 'react';
 const SocialLink = ({ href, label, children }: { href: string; label: string; children: ReactNode }) => (
   <motion.a
     href={href}
-    target="_blank"
-    rel="noreferrer"
     aria-label={label}
     whileHover={{ scale: 1.1 }}
     className="inline-block w-9 3xs:w-10 sm:w-11 lg:w-14"

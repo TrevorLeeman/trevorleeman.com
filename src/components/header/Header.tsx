@@ -3,8 +3,8 @@ import ThemeToggle from '../theme/ThemeToggle';
 import { motion, Variants } from 'framer-motion';
 
 const headerVariants: Variants = {
-  hidden: { opacity: 0, y: '-100%' },
-  show: { opacity: 1, y: 0, transition: { type: 'spring', bounce: 0.3, delay: 0.8, duration: 0.8 } },
+  hidden: { opacity: 0, y: -50 },
+  show: { opacity: 1, y: 0, transition: { type: 'spring', bounce: 0.5, delay: 0.8, duration: 0.8 } },
 };
 
 const Header = () => {

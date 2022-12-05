@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import Head from 'next/head';
-import Socials from '../components/homepage/socials/Socials';
+import { Socials } from '../components/homepage/socials/Socials';
 import IntroMessage from '../components/homepage/introMessage/IntroMessage';
 import Header from '../components/header/Header';
 import HomepageLayout from '../components/layout/HomepageLayout';

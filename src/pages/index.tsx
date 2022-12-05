@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import Head from 'next/head';
-import Socials from '../components/homepage/socials/Socials';
+import { Socials } from '../components/homepage/socials/Socials';
 import IntroMessage from '../components/homepage/introMessage/IntroMessage';
 import Header from '../components/header/Header';
 import HomepageLayout from '../components/layout/HomepageLayout';
@@ -8,7 +8,6 @@ import ProjectCard from '../components/homepage/projectCard/ProjectCard';
 import ProjectCardImage from '../components/homepage/projectCard/Image';
 import ProjectCardInfo from '../components/homepage/projectCard/Info';
 import ProjectCardTechIcon from '../components/homepage/projectCard/TechIcon';
-import { v4 as uuid } from 'uuid';
 import FeaturedPersonalProjectsWaveTop from '../components/homepage/waves/FeaturedPersonalProjectsTop';
 import FeaturedPersonalProjectsWaveBottom from '../components/homepage/waves/FeaturePersonalProjectsBottom';
 
@@ -45,25 +44,27 @@ const Homepage = () => {
         </h2>
         <div className="grid w-full gap-3 4xs:gap-5 3xs:gap-6 lg:grid-cols-2 xl:max-w-screen-lg xl:px-0">
           <ProjectCard>
-            <ProjectCardImage src="https://i.imgur.com/4pWNat5.png" alt="Coming Soon" />
+            <ProjectCardImage src="https://i.imgur.com/cC2ggwV.png" alt="OSRS Exchange site preview" />
             <ProjectCardInfo
               purpose="MMORPG Trading Tool"
-              title="OSRS Prices (WIP)"
-              description="Item flipping utility for the game Old School Runescape. Leverages the OSRS wiki Real-Time Prices API to suggest the most profitable items to flip in real time."
+              title="OSRS Exchange"
+              description="Market analysis utility for the game Old School Runescape. Leverages the OSRS wiki Real-Time Prices API to suggest the most profitable items to flip in real time."
+              liveLink="https://www.osrs.exchange"
               codeLink="https://github.com/TrevorLeeman/osrs-prices"
               techIcons={[
-                <ProjectCardTechIcon src="/icons/typescript.svg" title="TypeScript" key={uuid()} />,
-                <ProjectCardTechIcon src="/icons/react.svg" title="React" key={uuid()} />,
-                <ProjectCardTechIcon src="/icons/nextjs.svg" title="NextJS" key={uuid()} />,
-                <ProjectCardTechIcon src="/icons/scss.svg" title="SCSS" key={uuid()} />,
-                <ProjectCardTechIcon src="/icons/postgres.svg" title="Postgres" key={uuid()} />,
-                <ProjectCardTechIcon src="/icons/docker.svg" title="Docker" key={uuid()} />,
-                <ProjectCardTechIcon src="/icons/vercel.svg" title="Vercel" key={uuid()} />,
+                <ProjectCardTechIcon src="/icons/typescript.svg" title="TypeScript" key="TypeScript" />,
+                <ProjectCardTechIcon src="/icons/react.svg" title="React" key="React" />,
+                <ProjectCardTechIcon src="/icons/nextjs.svg" title="NextJS" key="NextJS" />,
+                <ProjectCardTechIcon src="/icons/tailwind.svg" title="Tailwind CSS" key="Tailwind CSS" />,
+                <ProjectCardTechIcon src="/icons/postgres.svg" title="Postgres" key="Postgres" />,
+                <ProjectCardTechIcon src="/icons/docker.svg" title="Docker" key="Docker" />,
+                <ProjectCardTechIcon src="/icons/vercel.svg" title="Vercel" key="Vercel" />,
+                <ProjectCardTechIcon src="/icons/railway.svg" title="Railway" key="Railway" />,
               ]}
             />
           </ProjectCard>
           <ProjectCard>
-            <ProjectCardImage src="https://i.imgur.com/FwHcrj6.png" alt="Tic Tac Toe" />
+            <ProjectCardImage src="https://i.imgur.com/FwHcrj6.png" alt="Tic Tac Toe site preview" />
             <ProjectCardInfo
               purpose="Progressive Web App"
               title="Tic Tac Toe"
@@ -71,10 +72,14 @@ const Homepage = () => {
               liveLink="https://tic-tac-toe.trevorleeman.com"
               codeLink="https://github.com/TrevorLeeman/react-tic-tac-toe"
               techIcons={[
-                <ProjectCardTechIcon src="/icons/javascript.svg" title="JavaScript" key={uuid()} />,
-                <ProjectCardTechIcon src="/icons/react.svg" title="React" key={uuid()} />,
-                <ProjectCardTechIcon src="/icons/styled-components.svg" title="Styled Components" key={uuid()} />,
-                <ProjectCardTechIcon src="/icons/scss.svg" title="SCSS" key={uuid()} />,
+                <ProjectCardTechIcon src="/icons/javascript.svg" title="JavaScript" key="JavaScript" />,
+                <ProjectCardTechIcon src="/icons/react.svg" title="React" key="React" />,
+                <ProjectCardTechIcon
+                  src="/icons/styled-components.svg"
+                  title="Styled Components"
+                  key="Styled Components"
+                />,
+                <ProjectCardTechIcon src="/icons/scss.svg" title="SCSS" key="SCSS" />,
               ]}
             />
           </ProjectCard>

@@ -1,5 +1,5 @@
-# [trevorleeman.com](https://www.trevorleeman.com)
+# [www.trevorleeman.com](https://www.trevorleeman.com)
 
-Built with React, NextJS, TypeScript, Framer Motion, and Tailwind CSS
+My portfolio website, built with React, Next.js, TypeScript, Framer Motion, and Tailwind CSS.
 
-Deployed to Vercel
+Deployed on Vercel.

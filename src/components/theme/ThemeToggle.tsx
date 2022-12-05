@@ -17,7 +17,7 @@ const ThemeToggle: React.FunctionComponent = () => {
 
   return mounted ? (
     <button
-      className="h-12 w-12 cursor-pointer overflow-hidden rounded-full border-2 border-theme-black pl-[7px] dark:border-theme-white md:scale-125"
+      className="h-12 w-12 cursor-pointer overflow-hidden rounded-full border-2 border-theme-black pl-[7px] hover:border-theme-purple dark:border-theme-white dark:hover:border-theme-pink md:scale-125"
       onClick={toggleTheme}
       aria-label="theme-toggle"
     >

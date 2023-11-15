@@ -50,7 +50,6 @@ const Homepage = () => {
               title="OSRS Exchange"
               description="Market analysis utility for the game Old School Runescape. Leverages the OSRS wiki Real-Time Prices API to suggest the most profitable items to flip in real time."
               liveLink="https://www.osrs.exchange"
-              codeLink="https://github.com/TrevorLeeman/osrs-prices"
               techIcons={[
                 <ProjectCardTechIcon src="/icons/typescript.svg" title="TypeScript" key="TypeScript" />,
                 <ProjectCardTechIcon src="/icons/react.svg" title="React" key="React" />,

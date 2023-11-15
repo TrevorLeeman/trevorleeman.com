@@ -16,7 +16,7 @@ const Document = () => {
         <meta property="twitter:image" content={OG_IMAGE_URL} />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet" />
       </Head>
       <body className="bg-theme-white text-theme-black duration-200 dark:bg-theme-black dark:text-theme-white">

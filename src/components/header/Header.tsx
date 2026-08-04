@@ -1,21 +1,23 @@
+import Link from 'next/link';
 import Navigation from './Navigation';
 import ThemeToggle from '../theme/ThemeToggle';
-import { motion, Variants } from 'framer-motion';
 
-const headerVariants: Variants = {
-  hidden: { opacity: 0, y: -50 },
-  show: { opacity: 1, y: 0, transition: { type: 'spring', bounce: 0.5, delay: 0.8, duration: 0.8 } },
-};
-
-const Header = () => {
-  return (
-    <motion.header variants={headerVariants} initial="hidden" animate="show" className="flex justify-center py-8 px-10">
-      <div className="flex w-full items-center justify-end">
+const Header = () => (
+  <header className="sticky top-0 z-40 border-b border-line bg-canvas/80 backdrop-blur-md">
+    <div className="container-page flex h-16 items-center justify-between gap-2 sm:gap-4">
+      <Link
+        href="/#top"
+        className="flex items-center gap-2 font-mono text-xs text-ink transition-colors hover:text-accent xs:gap-2.5 xs:text-sm"
+      >
+        <span aria-hidden="true" className="sc-heartbeat h-1.5 w-1.5 rounded-full bg-signal" />
+        trevor.leeman
+      </Link>
+      <div className="flex items-center gap-1 sm:gap-3">
         <Navigation />
         <ThemeToggle />
       </div>
-    </motion.header>
-  );
-};
+    </div>
+  </header>
+);
 
 export default Header;

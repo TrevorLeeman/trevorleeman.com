@@ -2,12 +2,396 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  :root {
+    color-scheme: light;
+
+    --color-canvas: 241 245 249;
+    --color-surface: 255 255 255;
+    --color-surface-raised: 241 245 249;
+    --color-line: 203 213 225;
+    --color-line-strong: 148 163 184;
+    --color-ink: 15 23 42;
+    --color-body: 51 65 85;
+    --color-muted: 71 85 105;
+    --color-accent: 79 70 229;
+    --color-accent-strong: 67 56 202;
+    --color-signal: 4 120 87;
+    --color-loss: 225 29 72;
+    --color-grid: 15 23 42;
+  }
+
+  .dark {
+    color-scheme: dark;
+
+    --color-canvas: 11 17 32;
+    --color-surface: 16 26 48;
+    --color-surface-raised: 22 33 60;
+    --color-line: 51 65 85;
+    --color-line-strong: 71 85 105;
+    --color-ink: 248 250 252;
+    --color-body: 203 213 225;
+    --color-muted: 148 163 184;
+    --color-accent: 129 140 248;
+    --color-accent-strong: 165 180 252;
+    --color-signal: 52 211 153;
+    --color-loss: 251 113 133;
+    --color-grid: 148 163 184;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Exactly the sticky header's height, so a scrolled-to section's top
+       hairline docks flush against the header's bottom border. */
+    scroll-padding-top: 4rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  html,
+  body,
+  #__next {
+    height: 100%;
+  }
+
+  /* Font-variable wrapper rendered in _app.tsx — a flex column so the layout
+     inside can stretch to fill short pages (sticky footer). */
+  #app-root {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-body antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: rgb(var(--color-accent) / 0.25);
+    color: rgb(var(--color-ink));
+  }
 }
 
-html,
-body,
-#__next {
-  height: 100%;
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8 2xl:max-w-[88rem];
+  }
+
+  /* Faint market-chart grid behind the hero. Pure CSS gradients, no images.
+     The mask swings off-centre to agree with the key light at top-left. */
+  .chart-grid {
+    background-image: linear-gradient(to right, rgb(var(--color-grid) / 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--color-grid) / 0.08) 1px, transparent 1px);
+    background-size: 72px 72px;
+    background-position: center top;
+    -webkit-mask-image: radial-gradient(ellipse 95% 70% at 28% 0%, #000 32%, transparent 100%);
+    mask-image: radial-gradient(ellipse 95% 70% at 28% 0%, #000 32%, transparent 100%);
+  }
+
+  /* Hero copy: one ramp, five tiers. Steps are 0.07/0.13/0.10/0.10 and
+     durations shrink as they go, an accelerando rather than a metronome. The
+     last tier lands at 0.96s and NOTHING new starts until 1.06s. That 100ms
+     rest is deliberate; do not close it. CSS-only, runs on first paint. */
+  .rise-eyebrow {
+    animation: rise-sm 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
+  }
+
+  .rise-name {
+    animation: rise-name 0.78s cubic-bezier(0.16, 1, 0.3, 1) 0.13s both;
+  }
+
+  .rise-line {
+    animation: rise-sm 0.62s cubic-bezier(0.22, 1, 0.36, 1) 0.26s both;
+  }
+
+  .rise-body {
+    animation: rise-sm 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
+  }
+
+  .rise-frame {
+    animation: rise-sm 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.46s both;
+  }
+
+  /* Signal chart: the hero's hand-built market scene. Every element carries an
+     sc-* class plus an inline animation-delay, so the intro sequences itself
+     with zero JS. Reduced motion shows the finished frame instead. */
+  .sc-fade {
+    opacity: 0;
+    animation: sc-fade 0.8s ease-out forwards;
+  }
+
+  .sc-rise {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: sc-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* The hero's ambient bar is 3.0s and its downbeat is 3.2s. sc-live, sc-ring,
+     sc-heartbeat and sc-scroll all resolve against it; changing one delay in
+     isolation silently desyncs the set with no visible error. */
+  .sc-live {
+    animation: sc-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+      sc-live 1.5s ease-in-out 3.2s infinite alternate;
+  }
+
+  .sc-heartbeat {
+    animation: sc-heartbeat 3s ease-in-out 3.2s infinite backwards;
+  }
+
+  .sc-draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: sc-draw var(--sc-draw-dur, 1.35s) cubic-bezier(0.25, 0.5, 0.2, 1) forwards;
+  }
+
+  /* The lit head rides the pen. Same duration, easing, and delay as .sc-draw
+     or the light detaches from the line it is supposed to be drawing. */
+  .sc-draw-head {
+    stroke-dasharray: 0.03 1;
+    stroke-dashoffset: 0.03;
+    animation: sc-draw-head var(--sc-draw-dur, 1.35s) cubic-bezier(0.25, 0.5, 0.2, 1) forwards;
+  }
+
+  .dark .sc-draw-head {
+    filter: drop-shadow(0 0 6px rgb(var(--color-signal) / 0.9));
+  }
+
+  .sc-pop {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: sc-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .sc-ring {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: sc-ring 3s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+
+  /* Interactive layer: crosshair readout, magnetic candles, click bursts. */
+  .sc-crosshair {
+    opacity: 0;
+    transition: opacity 0.18s ease-out;
+  }
+
+  .sc-magnet {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sc-snap,
+  .sc-chip {
+    transition: transform 0.14s ease-out;
+  }
+
+  .sc-burst-tick {
+    animation: sc-burst 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .sc-ring-once {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: sc-ring 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Scroll cue under the hero: a signal tick dropping down a hairline. The
+     backwards fill keeps the dot at the 0% keyframe's opacity 0 during the
+     delay instead of sitting fully opaque against the build. */
+  .sc-scroll-dot {
+    animation: sc-scroll 3s ease-in-out 3.2s infinite backwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rise-eyebrow,
+    .rise-name,
+    .rise-line,
+    .rise-body,
+    .rise-frame,
+    .sc-fade,
+    .sc-rise,
+    .sc-live,
+    .sc-heartbeat,
+    .sc-pop {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .sc-draw {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+
+    .sc-scroll-dot {
+      animation: none;
+      opacity: 1;
+    }
+
+    .sc-magnet,
+    .sc-snap,
+    .sc-chip {
+      transition: none;
+    }
+
+    .sc-ring,
+    .sc-burst-tick,
+    .sc-ring-once,
+    .sc-draw-head {
+      display: none;
+    }
+  }
+}
+
+@keyframes rise-sm {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* The name lands with mass: heavier travel, a settle from wide tracking, and a
+   blur that resolves. The to-stop omits letter-spacing so the implicit final
+   value stays whatever tracking-tight computes to. */
+@keyframes rise-name {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+    letter-spacing: 0.04em;
+    filter: blur(5px);
+  }
+  58% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes sc-heartbeat {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes sc-draw-head {
+  from {
+    stroke-dashoffset: 0.03;
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  to {
+    stroke-dashoffset: -0.97;
+    opacity: 0;
+  }
+}
+
+@keyframes sc-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scaleY(0.35);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sc-live {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.55;
+  }
+}
+
+@keyframes sc-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sc-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes sc-ring {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.35);
+  }
+  75% {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+
+@keyframes sc-burst {
+  from {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.5);
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(1);
+  }
+}
+
+@keyframes sc-scroll {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  15% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 }

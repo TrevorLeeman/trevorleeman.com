@@ -65,8 +65,8 @@ const Hero = () => (
         </div>
       </div>
 
-      <div aria-hidden="true" className="relative mt-6 sm:mt-7">
-        <div className="rise-frame mb-2 flex items-center gap-3 font-mono text-xs text-muted sm:mb-3">
+      <div aria-hidden="true" className="relative mt-4 sm:mt-5">
+        <div className="rise-frame mb-1 flex items-center gap-3 font-mono text-xs text-muted sm:mb-1.5">
           <span className="flex items-center gap-2">
             <span className="sc-heartbeat h-1.5 w-1.5 rounded-full bg-signal" />
             live signal
@@ -77,14 +77,15 @@ const Hero = () => (
         {/* Pinned right under the caption at a set height; the fold's leftover
             space below belongs to the scroll cue. The svg fills this box
             absolutely and derives its viewBox from the box aspect. */}
-        <div className="relative h-[clamp(230px,33svh,340px)] sm:h-[clamp(300px,37svh,600px)] 2xl:h-[clamp(420px,calc(100svh-640px),760px)]">
+        <div className="relative h-[clamp(230px,33svh,340px)] sm:h-[clamp(300px,37svh,600px)] 2xl:h-[clamp(360px,calc(100svh-640px),760px)]">
           <SignalChart variant="desktop" className="absolute inset-0 hidden h-full w-full sm:block" />
           <SignalChart variant="compact" className="absolute inset-0 h-full w-full sm:hidden" />
         </div>
       </div>
 
-      {/* The remaining fold is the cue's room; it centers itself in it. */}
-      <div className="rise-frame flex min-h-[3.5rem] flex-1 items-center justify-center">
+      {/* The remaining fold is the cue's room; it centers itself in it, and the
+          bottom padding floors it off the viewport edge on short folds. */}
+      <div className="rise-frame flex min-h-[3.5rem] flex-1 items-center justify-center pb-4">
         <Link
           href="/#work"
           aria-label="Scroll to the OSRS Exchange deep dive"

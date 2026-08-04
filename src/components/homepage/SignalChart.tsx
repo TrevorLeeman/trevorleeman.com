@@ -85,8 +85,10 @@ const buildScene = (config: VariantConfig, viewH: number, pxScale: number) => {
   const xAxisGutter = Math.round(tickFont * 1.9);
   const volBase = viewH - xAxisGutter - 6;
   const priceZero = volBase - px(46);
-  const priceScale = (priceZero - px(42)) / 100;
-  const gridTop = px(24);
+  /* Headroom above +100% stays just big enough for the endpoint halo, so the
+     scene opens with ink instead of blank sky. */
+  const priceScale = (priceZero - px(14)) / 100;
+  const gridTop = px(12);
   const marker = { halo: px(10), core: px(4.5), ring: px(6.5) };
   const x = (i: number) => x0 + i * pitch;
   const priceY = (p: number) => priceZero - p * priceScale;
@@ -601,28 +603,6 @@ const SignalChart = ({ variant, className = '' }: { variant: 'desktop' | 'compac
         vectorEffect="non-scaling-stroke"
         style={{ '--sc-draw-dur': `${scene.drawDur}s`, ...delay(DRAW_LANDS - scene.drawDur) } as CSSProperties}
       />
-
-      {/* The last price snaps back to the axis and prints in signal. */}
-      <line
-        x1={scene.endX}
-        y1={scene.endY}
-        x2={scene.plotL}
-        y2={scene.endY}
-        pathLength={1}
-        className="sc-draw"
-        strokeWidth={1}
-        vectorEffect="non-scaling-stroke"
-        style={{ '--sc-draw-dur': '0.35s', stroke: SIGNAL, strokeOpacity: 0.4, ...delay(2.85) } as CSSProperties}
-      />
-      <text
-        x={scene.plotL - 10}
-        y={scene.endY + scene.tickFont * 0.34}
-        textAnchor="end"
-        className="sc-fade font-mono"
-        style={{ fill: SIGNAL, fontSize: scene.tickFont, animationDuration: '0.5s', ...delay(3.2) }}
-      >
-        +{scene.closes[scene.lastIndex]}%
-      </text>
 
       {/* Where the line lands: a live, breathing endpoint, born from the pen. */}
       <circle

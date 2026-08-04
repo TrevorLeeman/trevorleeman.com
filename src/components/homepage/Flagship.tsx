@@ -88,7 +88,9 @@ const Flagship = () => (
         A real-time Grand Exchange trading platform for Old School RuneScape.
       </p>
       <p className="mt-5 font-mono text-xs uppercase tracking-label text-muted">
-        Founder · Product Designer · Full-Stack Engineer · DevOps Engineer
+        <span className="whitespace-nowrap">Founder</span> · <span className="whitespace-nowrap">Product Designer</span>{' '}
+        · <span className="whitespace-nowrap">Full-Stack Engineer</span> ·{' '}
+        <span className="whitespace-nowrap">DevOps Engineer</span>
       </p>
       <p className="mt-6 max-w-[68ch] text-base leading-relaxed sm:text-lg">
         Players see live prices, alerts, and profit calculators. Underneath is a real business: a NestJS and Postgres
@@ -101,10 +103,10 @@ const Flagship = () => (
       <StatTicker stats={stats} />
     </Reveal>
 
-    <div className="mt-12 grid gap-4 sm:grid-cols-2">
+    <div className="mt-10 grid gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-4">
       {features.map((feature, index) => (
         <Reveal key={feature.title} delay={index * 0.06} className="h-full">
-          <div className="h-full rounded-lg border border-line bg-surface/60 p-6 transition duration-300 ease-signal hover:border-accent/60 hover:bg-surface">
+          <div className="h-full rounded-lg border border-line bg-surface/60 p-5 transition duration-300 ease-signal hover:border-accent/60 hover:bg-surface sm:p-6">
             <div className="flex items-center justify-between gap-3">
               <span className="flex items-center gap-2.5 font-mono text-[0.65rem] uppercase tracking-label text-muted">
                 <feature.icon size={16} weight="bold" aria-hidden="true" className="shrink-0 text-accent" />
@@ -114,8 +116,8 @@ const Flagship = () => (
                 0{index + 1}
               </span>
             </div>
-            <h3 className="mt-4 font-display text-xl font-semibold text-ink">{feature.title}</h3>
-            <p className="mt-2.5 text-sm leading-relaxed">{feature.description}</p>
+            <h3 className="mt-3 font-display text-lg font-semibold text-ink sm:mt-4 sm:text-xl">{feature.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed sm:mt-2.5">{feature.description}</p>
           </div>
         </Reveal>
       ))}

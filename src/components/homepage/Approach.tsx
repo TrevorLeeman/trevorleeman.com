@@ -39,11 +39,13 @@ const Approach = () => (
           {/* Stacked on mobile, the first pillar's rule floats alone under the
               heading, so it only joins the shared md line. */}
           <div className={`h-full border-line ${index === 0 ? 'md:border-t md:pt-6' : 'border-t pt-6'}`}>
-            <div className="flex items-center justify-between">
-              <pillar.icon size={22} weight="bold" aria-hidden="true" className="text-accent" />
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="flex items-center gap-2.5 font-display text-lg font-semibold text-ink">
+                <pillar.icon size={20} weight="bold" aria-hidden="true" className="shrink-0 text-accent" />
+                {pillar.title}
+              </h3>
               <span className="font-mono text-xs tracking-label text-muted">0{index + 1}</span>
             </div>
-            <h3 className="mt-3 font-display text-lg font-semibold text-ink md:mt-5">{pillar.title}</h3>
             <p className="mt-2.5 text-sm leading-relaxed">{pillar.description}</p>
           </div>
         </Reveal>

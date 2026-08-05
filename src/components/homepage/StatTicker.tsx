@@ -77,8 +77,8 @@ const StatTicker = ({ stats }: { stats: Stat[] }) => {
   return (
     <dl ref={listRef} className="grid grid-cols-2 gap-x-8 gap-y-6 border-y border-line py-6 lg:grid-cols-4">
       {stats.map((stat, index) => (
-        <div key={stat.label}>
-          <dt className="flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-label text-muted">
+        <div key={stat.label} className="text-center sm:text-left">
+          <dt className="flex items-center justify-center gap-2 font-mono text-[0.7rem] uppercase tracking-label text-muted sm:justify-start">
             <span aria-hidden="true" className="h-1 w-1 rounded-full bg-signal" />
             {stat.label}
           </dt>

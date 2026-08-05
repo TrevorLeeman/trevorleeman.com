@@ -8,8 +8,7 @@ type NavigationItem = {
 };
 
 const navigationList: NavigationItem[] = [
-  { label: 'Work', href: '/#work' },
-  { label: 'Projects', href: '/#projects', className: 'hidden md:block' },
+  { label: 'Projects', href: '/#work' },
   { label: 'Approach', href: '/#approach', className: 'hidden md:block' },
   { label: 'About', href: '/#about', className: 'hidden md:block' },
   { label: 'Contact', href: '/#contact' },

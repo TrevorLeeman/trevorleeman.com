@@ -4,7 +4,8 @@ import Section from '../ui/Section';
 import Eyebrow from '../ui/Eyebrow';
 import Reveal from '../ui/Reveal';
 import ButtonLink from '../ui/ButtonLink';
-import TechBadge, { Tech } from '../ui/TechBadge';
+import { Tech } from '../ui/TechBadge';
+import TechChips from '../ui/TechChips';
 import StatTicker, { Stat } from './StatTicker';
 import { OSRS_EXCHANGE_URL } from '../../lib/links';
 
@@ -125,11 +126,7 @@ const Flagship = () => (
 
     <Reveal className="mt-12">
       <h3 className="font-mono text-xs uppercase tracking-label text-muted">Built with</h3>
-      <ul className="mt-4 flex list-none flex-wrap gap-2">
-        {tech.map(item => (
-          <TechBadge key={item.label} label={item.label} icon={item.icon} invertInDark={item.invertInDark} />
-        ))}
-      </ul>
+      <TechChips tech={tech} />
       <ButtonLink href={OSRS_EXCHANGE_URL} className="mt-8">
         Visit osrs.exchange
         <ArrowUpRight size={14} weight="bold" aria-hidden="true" />

@@ -96,7 +96,7 @@ const roles: Role[] = [
 
 const Experience = () => (
   <Section id="experience" labelledBy="experience-title">
-    <Reveal className="max-w-3xl">
+    <Reveal>
       <Eyebrow>02 · Experience</Eyebrow>
       <h2 id="experience-title" className="mt-5 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
         Eight years of shipping software that pays for itself.

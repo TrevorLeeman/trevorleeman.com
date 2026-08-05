@@ -9,6 +9,7 @@ type NavigationItem = {
 
 const navigationList: NavigationItem[] = [
   { label: 'Projects', href: '/#work' },
+  { label: 'Experience', href: '/#experience', className: 'hidden md:block' },
   { label: 'Approach', href: '/#approach', className: 'hidden md:block' },
   { label: 'About', href: '/#about', className: 'hidden md:block' },
   { label: 'Contact', href: '/#contact' },

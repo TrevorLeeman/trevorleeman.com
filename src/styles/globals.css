@@ -58,7 +58,7 @@
     height: 100%;
   }
 
-  /* Font-variable wrapper rendered in _app.tsx — a flex column so the layout
+  /* Font-variable wrapper rendered in _app.tsx: a flex column so the layout
      inside can stretch to fill short pages (sticky footer). */
   #app-root {
     display: flex;

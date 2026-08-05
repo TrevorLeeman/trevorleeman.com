@@ -60,13 +60,21 @@ const personJsonLd: JsonLd = {
     'React',
     'Next.js',
     'TypeScript',
+    'Node.js',
+    'NestJS',
     'Tailwind CSS',
     'PostgreSQL',
     'Docker',
     'UX design',
     'Real-time market data',
+    'AI-native development workflows',
+    'Agentic coding tools',
   ],
-  worksFor: { '@id': ORGANIZATION_ID },
+  worksFor: [{ '@id': ORGANIZATION_ID }, { '@type': 'Organization', name: 'M3 USA' }],
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Central Washington University' },
+    { '@type': 'CollegeOrUniversity', name: 'Everett Community College' },
+  ],
   subjectOf: { '@id': WEBSITE_ID },
 };
 

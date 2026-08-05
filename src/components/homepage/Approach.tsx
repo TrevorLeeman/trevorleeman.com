@@ -27,7 +27,7 @@ const pillars = [
 const Approach = () => (
   <Section id="approach" labelledBy="approach-title">
     <Reveal className="max-w-2xl">
-      <Eyebrow>02 · How I work</Eyebrow>
+      <Eyebrow>03 · How I work</Eyebrow>
       <h2 id="approach-title" className="mt-5 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
         The way I build.
       </h2>

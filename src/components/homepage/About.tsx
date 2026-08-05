@@ -12,7 +12,7 @@ const About = () => (
   <Section id="about" label="About">
     <div className="grid gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-16">
       <Reveal>
-        <Eyebrow>03 · About</Eyebrow>
+        <Eyebrow>04 · About</Eyebrow>
         <h2
           id="about-title"
           className="mt-5 max-w-2xl font-display text-2xl font-bold leading-snug tracking-tight text-ink sm:text-3xl"

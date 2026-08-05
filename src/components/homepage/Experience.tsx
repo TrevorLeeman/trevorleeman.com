@@ -55,7 +55,10 @@ const roles: Role[] = [
       'I build the interactive products M3 sells into the healthcare market, and the Turborepo platform they run on, owning features from architecture through CI/CD.',
     highlights: [
       { value: 'High six figures', label: 'in deals unlocked by an interactive chat product I spearheaded' },
-      { value: 'Six figures', label: 'pre-sale closed by a medical quiz product shipped on a tight deadline' },
+      {
+        value: 'Endless puzzles',
+        label: 'from an AI generation pipeline I built for Medical Matchup, a Connections-style quiz game',
+      },
       { value: '10x', label: 'serverless cost reduction from a new caching strategy' },
     ],
     stack: ['TypeScript', 'React', 'Next.js', 'GraphQL', 'Node.js', 'Postgres', 'AWS', 'GCP', 'Docker'],

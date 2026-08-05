@@ -8,7 +8,7 @@ import { GITHUB_URL, LINKEDIN_URL } from '../../lib/links';
 const Contact = () => (
   <Section id="contact" label="Contact">
     <Reveal>
-      <Eyebrow>04 · Contact</Eyebrow>
+      <Eyebrow>05 · Contact</Eyebrow>
       <h2
         id="contact-title"
         className="mt-6 max-w-3xl font-display text-3xl font-bold leading-snug tracking-tight text-ink [text-wrap:balance] sm:text-5xl"

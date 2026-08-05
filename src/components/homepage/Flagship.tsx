@@ -36,7 +36,7 @@ const tech: Tech[] = [
 
 const Flagship = () => (
   <Section id="work" labelledBy="work-title">
-    <Reveal className="max-w-3xl">
+    <Reveal>
       <Eyebrow>01 · Flagship</Eyebrow>
       <h2
         id="work-title"

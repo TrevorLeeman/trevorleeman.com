@@ -3,6 +3,7 @@ import Seo from '../components/seo/Seo';
 import Layout from '../components/layout/Layout';
 import Hero from '../components/homepage/Hero';
 import Flagship from '../components/homepage/Flagship';
+import Experience from '../components/homepage/Experience';
 import TicTacToe from '../components/homepage/TicTacToe';
 import Approach from '../components/homepage/Approach';
 import About from '../components/homepage/About';
@@ -13,6 +14,7 @@ const Homepage = () => (
     <Seo />
     <Hero />
     <Flagship />
+    <Experience />
     <Approach />
     <About />
     <TicTacToe />

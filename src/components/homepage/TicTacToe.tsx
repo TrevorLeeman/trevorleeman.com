@@ -250,12 +250,12 @@ const PlayableBoard = () => {
 
 /** An unnumbered aside between the serious sections: play, not portfolio. */
 const TicTacToe = () => (
-  <section id="projects" aria-labelledby="projects-title" className="border-t border-line py-12 sm:py-14">
+  <section id="intermission" aria-labelledby="intermission-title" className="border-t border-line py-12 sm:py-14">
     <div className="container-page">
       <Reveal className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
         <div className="max-w-xl">
           <p className="font-mono text-xs uppercase tracking-label text-muted">✕ ◯ · intermission</p>
-          <h2 id="projects-title" className="mt-4 font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">
+          <h2 id="intermission-title" className="mt-4 font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">
             Tic Tac Toe, from the pre-AI era.
           </h2>
           <p className="mt-3 max-w-[58ch] text-sm leading-relaxed sm:text-base">

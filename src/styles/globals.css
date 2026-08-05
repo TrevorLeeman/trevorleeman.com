@@ -79,6 +79,15 @@
     background-color: rgb(var(--color-accent) / 0.25);
     color: rgb(var(--color-ink));
   }
+
+  /* Theme sweep: ThemeToggle runs the switch inside a view transition and
+     animates a clip-path circle on the new snapshot. Silencing the default
+     cross-fade here makes that circle the entire effect. */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
 }
 
 @layer components {
@@ -214,6 +223,45 @@
     animation: sc-scroll 3s ease-in-out 3.2s infinite backwards;
   }
 
+  /* Intermission board: marks write themselves in with the same pen the hero
+     line and the winning strike use. The X is two quick flicks, the second
+     starting as the first lands; the O is one continuous sweep from the top.
+     Nothing translates, scales, or fades, so there is no motion to misread,
+     just line work appearing. */
+  .ttt-stroke {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: sc-draw 0.16s cubic-bezier(0.25, 0.5, 0.2, 1) both;
+  }
+
+  .ttt-stroke-2 {
+    animation-delay: 0.13s;
+  }
+
+  .ttt-stroke-o {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: sc-draw 0.3s cubic-bezier(0.25, 0.5, 0.2, 1) both;
+  }
+
+  .ttt-strike {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: sc-draw 0.4s cubic-bezier(0.25, 0.5, 0.2, 1) 0.1s forwards;
+  }
+
+  /* Konami rally: candles float up the viewport on inline delays/durations
+     and the toast holds for the whole RALLY_MS window, then both unmount. */
+  .bull-candle {
+    animation: bull-rise linear both;
+    will-change: transform;
+  }
+
+  .bull-toast {
+    left: 50%;
+    animation: bull-toast 6.2s ease-out both;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .rise-eyebrow,
     .rise-name,
@@ -251,6 +299,26 @@
     .sc-ring-once,
     .sc-draw-head {
       display: none;
+    }
+
+    .ttt-stroke,
+    .ttt-stroke-2,
+    .ttt-stroke-o {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+
+    .ttt-strike {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+
+    .bull-candle {
+      display: none;
+    }
+
+    .bull-toast {
+      animation: none;
     }
   }
 }
@@ -393,5 +461,40 @@
   100% {
     opacity: 0;
     transform: translateY(20px);
+  }
+}
+
+@keyframes bull-rise {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  10% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--drift, 0px), -108vh);
+  }
+}
+
+/* The toast centers itself with the same transform it animates, because a
+   keyframe transform would clobber a utility-class translate. */
+@keyframes bull-toast {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  6%,
+  88% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 0);
   }
 }

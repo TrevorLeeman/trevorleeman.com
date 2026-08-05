@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
+import BullMarket from '../fun/BullMarket';
 
 const Layout = ({ children }: PropsWithChildren) => (
   <div className="flex w-full grow flex-col">
@@ -15,6 +16,7 @@ const Layout = ({ children }: PropsWithChildren) => (
       {children}
     </main>
     <Footer />
+    <BullMarket />
   </div>
 );
 

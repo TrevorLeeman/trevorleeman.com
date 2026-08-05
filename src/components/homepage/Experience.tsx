@@ -128,15 +128,14 @@ const Experience = () => (
               {role.highlights && (
                 <ul className="mt-4 space-y-1.5">
                   {role.highlights.map(highlight => (
-                    <li
-                      key={highlight.label}
-                      className="flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5 text-sm leading-relaxed"
-                    >
+                    <li key={highlight.label} className="flex items-baseline gap-x-2.5 text-sm leading-relaxed">
                       <span aria-hidden="true" className="text-signal">
                         ▲
                       </span>
-                      <span className="whitespace-nowrap font-mono text-ink">{highlight.value}</span>
-                      <span>{highlight.label}</span>
+                      <span>
+                        <span className="whitespace-nowrap font-mono text-ink">{highlight.value}</span>{' '}
+                        {highlight.label}
+                      </span>
                     </li>
                   ))}
                 </ul>

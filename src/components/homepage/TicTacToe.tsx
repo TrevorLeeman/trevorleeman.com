@@ -169,7 +169,11 @@ const PlayableBoard = () => {
   };
 
   return (
-    <div className="flex shrink-0 flex-col items-center gap-3 self-center sm:self-auto">
+    /* The column is pinned to the board's width so the status line can never
+       drive layout: as w-max content wider than the column, it overhangs both
+       sides evenly (flex cross-axis centering) and the board holds still no
+       matter what the line says or grows. */
+    <div className="flex w-36 shrink-0 flex-col items-center gap-3 self-center sm:w-40 sm:self-auto">
       <div className="relative h-36 w-36 sm:h-40 sm:w-40">
         {/* Hand-drawn grid: four rounded hairlines instead of cell borders. */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -224,7 +228,10 @@ const PlayableBoard = () => {
         ) : null}
       </div>
 
-      <p aria-live="polite" className="flex h-4 items-center gap-3 font-mono text-[0.65rem] text-muted">
+      <p
+        aria-live="polite"
+        className="flex h-4 w-max items-center gap-3 whitespace-nowrap font-mono text-[0.65rem] text-muted"
+      >
         {status}
         {over ? (
           <button

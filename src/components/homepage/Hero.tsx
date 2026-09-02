@@ -50,9 +50,9 @@ const Hero = () => (
         I build products for physicians, end to end.
       </p>
 
-      <p className="rise-body mt-3 max-w-[58ch] text-base leading-relaxed sm:mt-4 sm:text-lg 2xl:mt-5 2xl:text-xl">
+      <p className="rise-body mt-3 max-w-[58ch] text-base leading-relaxed [text-wrap:pretty] sm:mt-4 sm:text-lg 2xl:mt-5 2xl:text-xl">
         At M3 USA I take MDLinx products from spec to production: a medical puzzle game, sponsored campaigns,
-        experimentation, and the ad platform underneath.
+        experimentation, and the ad platform&nbsp;underneath.
       </p>
 
       <div className="rise-frame mt-5 flex flex-wrap items-center gap-3 sm:mt-6">

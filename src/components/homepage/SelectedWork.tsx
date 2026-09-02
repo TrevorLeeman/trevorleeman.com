@@ -16,10 +16,10 @@ type Initiative = {
 };
 
 const stats: Stat[] = [
-  { value: '7', label: 'Initiatives owned end to end' },
+  { value: '7', label: 'Initiatives, end to end' },
   { value: '90%', label: 'Fewer security findings' },
-  { value: '2x', label: 'Faster AI content generation' },
-  { value: 'Hundreds', label: 'Players in the first week' },
+  { value: '2x', label: 'Faster AI generation' },
+  { value: 'Hundreds', label: 'Players in week one' },
 ];
 
 const initiatives: Initiative[] = [

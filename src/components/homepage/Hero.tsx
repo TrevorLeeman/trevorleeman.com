@@ -76,12 +76,12 @@ const Hero = () => (
             pulse
           </span>
           <span aria-hidden="true" className="h-px flex-1 bg-line/70" />
-          <span className="hidden sm:block">three years, nine beats</span>
+          <span className="hidden sm:block">four years, thirteen beats</span>
         </div>
         {/* Pinned right under the caption at a set height; the fold's leftover
             space below belongs to the scroll cue. The svg fills this box
             absolutely and derives its viewBox from the box aspect. */}
-        <div className="relative h-[clamp(230px,33svh,340px)] sm:h-[clamp(300px,37svh,600px)] 2xl:h-[clamp(360px,calc(100svh-640px),760px)]">
+        <div className="relative h-[clamp(230px,33svh,340px)] sm:h-[clamp(220px,31svh,540px)] 2xl:h-[clamp(300px,calc(100svh-680px),720px)]">
           <PulseChart variant="desktop" className="absolute inset-0 hidden h-full w-full sm:block" />
           <PulseChart variant="compact" className="absolute inset-0 h-full w-full sm:hidden" />
         </div>

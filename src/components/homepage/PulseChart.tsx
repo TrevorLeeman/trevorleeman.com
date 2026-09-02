@@ -7,8 +7,8 @@ import type { CSSProperties, PointerEvent as ReactPointerEvent } from 'react';
  * amplitude grows over time. All ambient motion lives in the sc-* classes in
  * globals.css; the geometry is fixed constants and pure arithmetic, so server
  * and client render identical markup. Two scenes share the code: a wide
- * nine-beat desktop cut and a taller five-beat compact cut for phones, each
- * rendered by its own instance and swapped with CSS. Labels are sized from the
+ * thirteen-beat desktop cut and a taller seven-beat compact cut for phones,
+ * each rendered by its own instance and swapped with CSS. Labels are sized from the
  * measured viewport scale so they render at a constant on-screen size at any
  * width. On fine pointers the desktop instance adds a crosshair that snaps to
  * the nearest beat, a readout chip naming it, a soft glow on that beat, and a
@@ -263,6 +263,7 @@ const buildScene = (config: VariantConfig, viewH: number, pxScale: number) => {
   return {
     viewW: config.viewW,
     viewH,
+    pxScale,
     areaOpacity: config.areaOpacity,
     drawDur: config.drawDur,
     drawStart,
@@ -285,31 +286,36 @@ const buildScene = (config: VariantConfig, viewH: number, pxScale: number) => {
   };
 };
 
-/* Nine beats across three years on desktop; the phone cut keeps five. Beats
-   are evenly spaced rather than dated: real dates would stack three 2025
-   launches on top of each other and leave a dead flat before 2026. */
+/* Thirteen beats across four years on desktop; the phone cut keeps seven.
+   Beats are evenly spaced rather than dated: real dates would stack the 2025
+   launches on top of each other and leave dead flats between the rest. */
 const CONFIGS: Record<'desktop' | 'compact', VariantConfig> = {
   desktop: {
     viewW: 1200,
     defaultViewH: 420,
     defaultPxScale: 0.9,
-    minViewH: 280,
+    minViewH: 240,
     maxViewH: 780,
     beats: [
-      { label: 'joined', chip: 'joined MDLinx · 2023', amp: 0.26, priority: 1 },
-      { label: 'ad platform', chip: 'ad platform · 2024', amp: 0.32, priority: 7 },
-      { label: 'first A/B test', chip: 'first A/B test · 2024', amp: 0.4, priority: 4 },
-      { label: 'SmartestDoc', chip: 'SmartestDoc campaigns · 2025', amp: 0.5, priority: 5 },
-      { label: 'Flashpoint', chip: 'Flashpoint · 2025', amp: 0.58, priority: 2 },
-      { label: 'auth funnel', chip: 'refresh-free auth · 2025', amp: 0.64, priority: 8 },
-      { label: 'Medical Matchup', chip: 'Medical Matchup · 2026', amp: 0.78, priority: 3 },
-      { label: 'security program', chip: 'security program · 2026', amp: 0.88, priority: 6 },
+      { label: 'joined', chip: 'joined M3 USA · 2022', amp: 0.22, priority: 1 },
+      { label: 'homepage', chip: 'homepage rebuilt in two weeks · 2022', amp: 0.3, priority: 5 },
+      { label: 'SmartestDoc v2', chip: 'SmartestDoc v2 · 2023', amp: 0.36, priority: 7 },
+      { label: 'Digital Rounds', chip: 'Digital Rounds · 2023', amp: 0.42, priority: 9 },
+      { label: 'upgrades', chip: 'monorepo upgrades · 2023', amp: 0.46, priority: 12 },
+      { label: 'promoted', chip: 'promoted to Senior · 2024', amp: 0.52, priority: 8 },
+      { label: 'first A/B test', chip: 'first A/B test · 2024', amp: 0.56, priority: 4 },
+      { label: 'campaigns', chip: 'SmartestDoc campaigns · 2025', amp: 0.62, priority: 10 },
+      { label: 'Flashpoint', chip: 'Flashpoint · 2025', amp: 0.68, priority: 2 },
+      { label: 'auth funnel', chip: 'refresh-free auth · 2025', amp: 0.72, priority: 11 },
+      { label: 'Medical Matchup', chip: 'Medical Matchup · 2026', amp: 0.82, priority: 3 },
+      { label: 'security', chip: 'security program · 2026', amp: 0.9, priority: 6 },
       { label: 'team lead', chip: 'team lead · 2026', amp: 1, priority: 0 },
     ],
     yearLinesBetween: [
-      [0, 1],
-      [2, 3],
-      [5, 6],
+      [1, 2],
+      [4, 5],
+      [6, 7],
+      [9, 10],
     ],
     areaOpacity: 0.14,
     drawDur: 1.5,
@@ -322,16 +328,20 @@ const CONFIGS: Record<'desktop' | 'compact', VariantConfig> = {
     minViewH: 400,
     maxViewH: 860,
     beats: [
-      { label: 'joined', chip: 'joined MDLinx · 2023', amp: 0.3, priority: 1 },
-      { label: 'first A/B test', chip: 'first A/B test · 2024', amp: 0.46, priority: 4 },
-      { label: 'Flashpoint', chip: 'Flashpoint · 2025', amp: 0.62, priority: 2 },
-      { label: 'Medical Matchup', chip: 'Medical Matchup · 2026', amp: 0.8, priority: 3 },
+      { label: 'joined', chip: 'joined M3 USA · 2022', amp: 0.26, priority: 1 },
+      { label: 'homepage', chip: 'homepage rebuilt in two weeks · 2022', amp: 0.36, priority: 5 },
+      { label: 'SmartestDoc v2', chip: 'SmartestDoc v2 · 2023', amp: 0.44, priority: 7 },
+      { label: 'first A/B test', chip: 'first A/B test · 2024', amp: 0.54, priority: 4 },
+      { label: 'Flashpoint', chip: 'Flashpoint · 2025', amp: 0.66, priority: 2 },
+      { label: 'Medical Matchup', chip: 'Medical Matchup · 2026', amp: 0.82, priority: 3 },
       { label: 'team lead', chip: 'team lead · 2026', amp: 1, priority: 0 },
     ],
-    labelBeats: [0, 2, 4],
+    labelBeats: [0, 4, 6],
     yearLinesBetween: [
       [1, 2],
       [2, 3],
+      [3, 4],
+      [4, 5],
     ],
     areaOpacity: 0.09,
     drawDur: 1.4,
@@ -597,17 +607,19 @@ const PulseChart = ({ variant, className = '' }: { variant: 'desktop' | 'compact
         : null}
 
       {/* Faint fill under the trace, then the trace itself drawn by a lit pen
-          that dies where the endpoint is born. */}
+          that dies where the endpoint is born. The dashed paths must scale with
+          the viewBox: Chromium scales a dash pattern by the inverse viewport
+          scale under non-scaling-stroke, which hid the tail on wide screens, so
+          their stroke width is divided by the measured scale instead. */}
       <path d={scene.areaPath} fill={`url(#${areaId})`} className="sc-fade" style={delay(1.9)} />
       <path
         d={scene.linePath}
         pathLength={1}
         className="sc-draw"
         stroke={`url(#${gradientId})`}
-        strokeWidth={2.5}
+        strokeWidth={2.5 / scene.pxScale}
         strokeLinejoin="round"
         strokeLinecap="round"
-        vectorEffect="non-scaling-stroke"
         style={drawStyle}
       />
       <path
@@ -615,10 +627,9 @@ const PulseChart = ({ variant, className = '' }: { variant: 'desktop' | 'compact
         pathLength={1}
         className="sc-draw-head"
         stroke={SIGNAL}
-        strokeWidth={4.5}
+        strokeWidth={4.5 / scene.pxScale}
         strokeLinejoin="round"
         strokeLinecap="round"
-        vectorEffect="non-scaling-stroke"
         style={drawStyle}
       />
 

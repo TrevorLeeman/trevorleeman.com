@@ -37,8 +37,6 @@ type VariantConfig = {
   minViewH: number;
   maxViewH: number;
   beats: Beat[];
-  /** Axis labels to show; undefined lets the collision rule decide by priority. */
-  labelBeats?: number[];
   /** Faint year hairlines drawn midway between these beat index pairs. */
   yearLinesBetween: [number, number][];
   areaOpacity: number;
@@ -203,7 +201,8 @@ const buildScene = (config: VariantConfig, viewH: number, pxScale: number) => {
   const drawStart = DRAW_LANDS - config.drawDur;
 
   const labelY = viewH - Math.round(tickFont * 0.5);
-  const estW = (text: string) => text.length * tickFont * 0.62;
+  /* JetBrains Mono advances exactly 0.6em per glyph, spaces and slashes included. */
+  const estW = (text: string) => text.length * tickFont * 0.6;
   const anchorFor = (i: number): 'start' | 'middle' | 'end' => (i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle');
   const labelXFor = (i: number, x: number) => (i === 0 ? x - W / 2 : i === n - 1 ? x + marker.halo : x);
 
@@ -234,23 +233,19 @@ const buildScene = (config: VariantConfig, viewH: number, pxScale: number) => {
     if (b.anchor === 'end') return [b.labelX - w, b.labelX];
     return [b.labelX - w / 2, b.labelX + w / 2];
   };
-  const gap = tickFont * 0.7;
+  const gap = tickFont * 0.5;
   const shown: number[] = [];
-  if (config.labelBeats) {
-    shown.push(...config.labelBeats);
-  } else {
-    [...beats]
-      .sort((a, b) => a.priority - b.priority)
-      .forEach(b => {
-        const [l, r] = span(b);
-        if (l < 0 || r > config.viewW) return;
-        const clear = shown.every(j => {
-          const [jl, jr] = span(beats[j]);
-          return r + gap <= jl || l >= jr + gap;
-        });
-        if (clear) shown.push(b.i);
+  [...beats]
+    .sort((a, b) => a.priority - b.priority)
+    .forEach(b => {
+      const [l, r] = span(b);
+      if (l < 0 || r > config.viewW) return;
+      const clear = shown.every(j => {
+        const [jl, jr] = span(beats[j]);
+        return r + gap <= jl || l >= jr + gap;
       });
-  }
+      if (clear) shown.push(b.i);
+    });
   shown.forEach(i => {
     beats[i].shown = true;
   });
@@ -297,19 +292,19 @@ const CONFIGS: Record<'desktop' | 'compact', VariantConfig> = {
     minViewH: 240,
     maxViewH: 780,
     beats: [
-      { label: 'joined', chip: 'joined M3 USA · 2022', amp: 0.22, priority: 1 },
-      { label: 'homepage', chip: 'homepage rebuilt in two weeks · 2022', amp: 0.3, priority: 5 },
+      { label: 'Joined', chip: 'Joined M3 USA · 2022', amp: 0.22, priority: 1 },
+      { label: 'Homepage', chip: 'Homepage rebuilt in two weeks · 2022', amp: 0.3, priority: 5 },
       { label: 'SmartestDoc v2', chip: 'SmartestDoc v2 · 2023', amp: 0.36, priority: 7 },
       { label: 'Digital Rounds', chip: 'Digital Rounds · 2023', amp: 0.42, priority: 9 },
-      { label: 'upgrades', chip: 'monorepo upgrades · 2023', amp: 0.46, priority: 12 },
-      { label: 'promoted', chip: 'promoted to Senior · 2024', amp: 0.52, priority: 8 },
-      { label: 'first A/B test', chip: 'first A/B test · 2024', amp: 0.56, priority: 4 },
-      { label: 'campaigns', chip: 'SmartestDoc campaigns · 2025', amp: 0.62, priority: 10 },
+      { label: 'Upgrades', chip: 'Monorepo upgrades · 2023', amp: 0.46, priority: 12 },
+      { label: 'Promoted', chip: 'Promoted to Senior · 2024', amp: 0.52, priority: 8 },
+      { label: 'First A/B test', chip: 'First A/B test · 2024', amp: 0.56, priority: 4 },
+      { label: 'Campaigns', chip: 'SmartestDoc campaigns · 2025', amp: 0.62, priority: 10 },
       { label: 'Flashpoint', chip: 'Flashpoint · 2025', amp: 0.68, priority: 2 },
-      { label: 'auth funnel', chip: 'refresh-free auth · 2025', amp: 0.72, priority: 11 },
+      { label: 'Auth funnel', chip: 'Refresh-free auth · 2025', amp: 0.72, priority: 11 },
       { label: 'Medical Matchup', chip: 'Medical Matchup · 2026', amp: 0.82, priority: 3 },
-      { label: 'security', chip: 'security program · 2026', amp: 0.9, priority: 6 },
-      { label: 'team lead', chip: 'team lead · 2026', amp: 1, priority: 0 },
+      { label: 'Security', chip: 'Security program · 2026', amp: 0.9, priority: 6 },
+      { label: 'Team lead', chip: 'Team lead · 2026', amp: 1, priority: 0 },
     ],
     yearLinesBetween: [
       [1, 2],
@@ -328,15 +323,14 @@ const CONFIGS: Record<'desktop' | 'compact', VariantConfig> = {
     minViewH: 400,
     maxViewH: 860,
     beats: [
-      { label: 'joined', chip: 'joined M3 USA · 2022', amp: 0.26, priority: 1 },
-      { label: 'homepage', chip: 'homepage rebuilt in two weeks · 2022', amp: 0.36, priority: 5 },
-      { label: 'SmartestDoc v2', chip: 'SmartestDoc v2 · 2023', amp: 0.44, priority: 7 },
-      { label: 'first A/B test', chip: 'first A/B test · 2024', amp: 0.54, priority: 4 },
+      { label: 'Joined', chip: 'Joined M3 USA · 2022', amp: 0.26, priority: 1 },
+      { label: 'Homepage', chip: 'Homepage rebuilt in two weeks · 2022', amp: 0.36, priority: 6 },
+      { label: 'SmartestDoc v2', chip: 'SmartestDoc v2 · 2023', amp: 0.44, priority: 3 },
+      { label: 'First A/B test', chip: 'First A/B test · 2024', amp: 0.54, priority: 5 },
       { label: 'Flashpoint', chip: 'Flashpoint · 2025', amp: 0.66, priority: 2 },
-      { label: 'Medical Matchup', chip: 'Medical Matchup · 2026', amp: 0.82, priority: 3 },
-      { label: 'team lead', chip: 'team lead · 2026', amp: 1, priority: 0 },
+      { label: 'Medical Matchup', chip: 'Medical Matchup · 2026', amp: 0.82, priority: 4 },
+      { label: 'Team lead', chip: 'Team lead · 2026', amp: 1, priority: 0 },
     ],
-    labelBeats: [0, 4, 6],
     yearLinesBetween: [
       [1, 2],
       [2, 3],

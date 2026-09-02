@@ -39,6 +39,8 @@ type VariantConfig = {
   beats: Beat[];
   /** Faint year hairlines drawn midway between these beat index pairs. */
   yearLinesBetween: [number, number][];
+  /** One label per span the hairlines cut, left to right; one more than the lines. */
+  years: string[];
   areaOpacity: number;
   /** Seconds the trace spends drawing; both scenes land on DRAW_LANDS. */
   drawDur: number;
@@ -130,9 +132,12 @@ const buildScene = (config: VariantConfig, viewH: number, pxScale: number) => {
   const pxf = (screenPx: number) => screenPx / pxScale;
 
   const tickFont = Math.round(config.tickPx / pxScale);
+  /* The axis carries two rows: beat words nearest the rule, years beneath. */
+  const yearFont = Math.round(tickFont * 0.85);
+  const yearRow = Math.round(yearFont * 1.7);
   const plotL = px(8);
   const plotR = config.viewW - px(8);
-  const xAxisGutter = Math.round(tickFont * 1.9);
+  const xAxisGutter = Math.round(tickFont * 1.9) + yearRow;
   const axisY = viewH - xAxisGutter - px(4);
   /* The gap between the baseline and the rule keeps the undershoots off it. */
   const baseY = axisY - px(16);
@@ -200,7 +205,8 @@ const buildScene = (config: VariantConfig, viewH: number, pxScale: number) => {
   const total = cum[cum.length - 1];
   const drawStart = DRAW_LANDS - config.drawDur;
 
-  const labelY = viewH - Math.round(tickFont * 0.5);
+  const labelY = viewH - yearRow - Math.round(tickFont * 0.5);
+  const yearY = viewH - Math.round(yearFont * 0.45);
   /* JetBrains Mono advances exactly 0.6em per glyph, spaces and slashes included. */
   const estW = (text: string) => text.length * tickFont * 0.6;
   const anchorFor = (i: number): 'start' | 'middle' | 'end' => (i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle');
@@ -252,6 +258,8 @@ const buildScene = (config: VariantConfig, viewH: number, pxScale: number) => {
   });
 
   const yearLines = config.yearLinesBetween.map(([a, b]) => (beats[a].x + beats[b].x) / 2);
+  const edges = [plotL, ...yearLines, plotR];
+  const years = config.years.map((year, i) => ({ year, x: (edges[i] + edges[i + 1]) / 2 }));
   const linePath = tracePath(pts);
   const last = beats[n - 1];
   const areaPath = `${linePath} L${f(last.x)},${f(baseY)} L${f(plotL)},${f(baseY)} Z`;
@@ -265,6 +273,8 @@ const buildScene = (config: VariantConfig, viewH: number, pxScale: number) => {
     drawStart,
     px,
     tickFont,
+    yearFont,
+    yearY,
     plotL,
     plotR,
     axisY,
@@ -275,6 +285,7 @@ const buildScene = (config: VariantConfig, viewH: number, pxScale: number) => {
     labelY,
     beats,
     yearLines,
+    years,
     linePath,
     areaPath,
     endX: last.x,
@@ -313,6 +324,7 @@ const CONFIGS: Record<'desktop' | 'compact', VariantConfig> = {
       [6, 7],
       [9, 10],
     ],
+    years: ['2022', '2023', '2024', '2025', '2026'],
     areaOpacity: 0.14,
     drawDur: 1.5,
     tickPx: 12,
@@ -338,6 +350,7 @@ const CONFIGS: Record<'desktop' | 'compact', VariantConfig> = {
       [3, 4],
       [4, 5],
     ],
+    years: ['2022', '2023', '2024', '2025', '2026'],
     areaOpacity: 0.09,
     drawDur: 1.4,
     tickPx: 10,
@@ -522,7 +535,7 @@ const PulseChart = ({ variant, className = '' }: { variant: 'desktop' | 'compact
         </linearGradient>
       </defs>
 
-      {/* Grid, the bottom rule, and faint year hairlines. */}
+      {/* Grid, the bottom rule, faint year hairlines, and the year row. */}
       <g className="sc-fade" style={delay(1.06)}>
         {[0.2, 0.4, 0.6, 0.8, 1].map(k => (
           <line
@@ -554,6 +567,18 @@ const PulseChart = ({ variant, className = '' }: { variant: 'desktop' | 'compact
           style={{ stroke: 'rgb(var(--color-grid) / 0.16)' }}
           vectorEffect="non-scaling-stroke"
         />
+        {scene.years.map(span => (
+          <text
+            key={span.year}
+            x={f(span.x)}
+            y={scene.yearY}
+            textAnchor="middle"
+            className="font-mono"
+            style={{ fill: MUTED, fillOpacity: 0.45, fontSize: scene.yearFont, letterSpacing: '0.08em' }}
+          >
+            {span.year}
+          </text>
+        ))}
       </g>
 
       {/* Axis words, each landing as the pen crests its beat. */}

@@ -24,7 +24,7 @@ const formatValue = (value: number, plan: CountPlan) =>
 
 /**
  * Ticker-style strip of figures between two hairlines, no card chrome. The
- * figures tick up like live market data the first time the strip scrolls into
+ * figures tick up like a live counter the first time the strip scrolls into
  * view. Same contract as Reveal: the server HTML carries the final values, the
  * count-up only runs for figures the visitor has not seen yet, and the frames
  * write textContent directly so nothing re-renders. The final frame restores

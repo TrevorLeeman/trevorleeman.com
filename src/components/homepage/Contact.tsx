@@ -13,7 +13,7 @@ const Contact = () => (
         id="contact-title"
         className="mt-6 max-w-3xl font-display text-3xl font-bold leading-snug tracking-tight text-ink [text-wrap:balance] sm:text-5xl"
       >
-        Building something that needs an engineer who owns the whole stack? Let’s talk.
+        Curious how something here was built, or working on a similar problem? I’m always up for a conversation.
       </h2>
       <div className="mt-10 flex flex-wrap gap-3">
         <ButtonLink href={LINKEDIN_URL}>

@@ -47,12 +47,12 @@ const CompanyLogo = ({ logo }: { logo: Logo }) => (
 const roles: Role[] = [
   {
     period: '2022 · Present',
-    title: 'Senior Software Engineer',
-    meta: 'M3 USA · Promoted from Software Engineer in 2024',
+    title: 'Senior Software Engineer, Team Lead',
+    meta: 'M3 USA · Team Lead since Sep 2026 · Promoted to Senior in 2024',
     icon: Heartbeat,
     logo: m3Logo,
     summary:
-      'I build the interactive products M3 sells into the healthcare market, and the Turborepo platform they run on, owning features from architecture through CI/CD.',
+      'I build the interactive products M3 sells into the healthcare market and the Turborepo platform they run on, and I steward the pieces everything else depends on: the registration funnel, the ad platform, and releases across several repos. Since September 2026 I also lead the team.',
     highlights: [
       { value: 'High six figures', label: 'in deals unlocked by an interactive chat product I spearheaded' },
       {
@@ -61,7 +61,20 @@ const roles: Role[] = [
       },
       { value: '10x', label: 'serverless cost reduction from a new caching strategy' },
     ],
-    stack: ['TypeScript', 'React', 'Next.js', 'GraphQL', 'Node.js', 'Postgres', 'AWS', 'GCP', 'Docker'],
+    stack: [
+      'TypeScript',
+      'React',
+      'Next.js',
+      'GraphQL',
+      'Node.js',
+      'Django',
+      'Postgres',
+      'Contentful',
+      'GCP',
+      'AWS',
+      'Terraform',
+      'Kubernetes',
+    ],
   },
   {
     period: '2019 · 2022',
@@ -108,8 +121,9 @@ const Experience = () => (
       </p>
       <p className="mt-4 max-w-[68ch] text-base leading-relaxed sm:text-lg">
         I&rsquo;m also an AI-native engineer. Agentic coding tools run through my daily workflow: I plan with them,
-        delegate implementation to them, and review everything they produce before it ships. That leverage is a big part
-        of how one person designs, builds, and operates all of OSRS Exchange.
+        delegate implementation to them, and review everything they produce before it ships. That leverage is how the
+        Medical Matchup puzzle pipeline and the security remediation CLI shipped alongside the product roadmap instead
+        of after it.
       </p>
     </Reveal>
 

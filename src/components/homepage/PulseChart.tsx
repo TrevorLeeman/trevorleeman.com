@@ -233,7 +233,8 @@ const buildScene = (config: VariantConfig, viewH: number, pxScale: number) => {
     if (b.anchor === 'end') return [b.labelX - w, b.labelX];
     return [b.labelX - w / 2, b.labelX + w / 2];
   };
-  const gap = tickFont * 0.5;
+  /* A full glyph of air, so neighbours never read as one phrase. */
+  const gap = tickFont;
   const shown: number[] = [];
   [...beats]
     .sort((a, b) => a.priority - b.priority)

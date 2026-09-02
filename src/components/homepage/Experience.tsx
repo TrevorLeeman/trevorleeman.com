@@ -17,6 +17,14 @@ type Logo = {
   className?: string;
 };
 
+/** One title held at a company; the first stage is the current one. */
+type Stage = {
+  period: string;
+  title: string;
+  note?: string;
+  highlights?: Highlight[];
+};
+
 type Role = {
   period: string;
   title: string;
@@ -25,12 +33,29 @@ type Role = {
   icon: Icon;
   logo: Logo;
   highlights?: Highlight[];
+  /** Promotions within the role, newest first, rendered as a rail. */
+  stages?: Stage[];
   stack?: string[];
 };
 
 const m3Logo: Logo = { src: '/logos/m3-usa.png', width: 36, height: 36, className: 'rounded-md' };
 const evccLogo: Logo = { src: '/logos/evcc.png', width: 36, height: 36, className: 'rounded-md' };
 const cwuLogo: Logo = { src: '/logos/cwu.png', width: 36, height: 36, className: 'rounded-md' };
+
+const Highlights = ({ items, className = '' }: { items: Highlight[]; className?: string }) => (
+  <ul className={`space-y-1.5 ${className}`}>
+    {items.map(highlight => (
+      <li key={highlight.label} className="flex items-baseline gap-x-2.5 text-sm leading-relaxed">
+        <span aria-hidden="true" className="text-signal">
+          ▲
+        </span>
+        <span>
+          <span className="whitespace-nowrap font-mono text-ink">{highlight.value}</span> {highlight.label}
+        </span>
+      </li>
+    ))}
+  </ul>
+);
 
 const CompanyLogo = ({ logo }: { logo: Logo }) => (
   <Image
@@ -48,18 +73,72 @@ const roles: Role[] = [
   {
     period: '2022 · Present',
     title: 'Senior Software Engineer, Team Lead',
-    meta: 'M3 USA · Team Lead since Sep 2026 · Promoted to Senior in 2024',
+    meta: 'M3 USA · Software Engineer to Team Lead in four years',
     icon: Heartbeat,
     logo: m3Logo,
     summary:
-      'I build the interactive products M3 sells into the healthcare market and the Turborepo platform they run on, and I steward the pieces everything else depends on: the registration funnel, the ad platform, and releases across several repos. Since September 2026 I also lead the team.',
-    highlights: [
-      { value: 'High six figures', label: 'in deals unlocked by an interactive chat product I spearheaded' },
+      'I build the interactive products M3 sells into the healthcare market and the Turborepo platform they run on, and I steward the pieces everything else depends on: the registration funnel, the ad platform, and releases across several repos.',
+    stages: [
       {
-        value: 'Endless puzzles',
-        label: 'from an AI generation pipeline I built for Medical Matchup, a Connections-style quiz game',
+        period: 'Sep 2026 · Present',
+        title: 'Senior Software Engineer, Team Lead',
+        note: 'Leading the team that builds MDLinx, with the security program and content pipelines I designed now running as team cadence.',
       },
-      { value: '10x', label: 'serverless cost reduction from a new caching strategy' },
+      {
+        period: '2024 · Aug 2026',
+        title: 'Senior Software Engineer',
+        highlights: [
+          {
+            value: 'Endless puzzles',
+            label: 'from an AI generation pipeline I built for Medical Matchup, a Connections-style quiz game',
+          },
+          {
+            value: 'Refresh-free',
+            label:
+              'login and signup after years of a full-page reload, plus a sticky component manager that ended conflicts between banners, extenders, and ads',
+          },
+          {
+            value: 'Video platform',
+            label: 'built on PlayerJS, Sprout Video, and Contentful with custom analytics events',
+          },
+          {
+            value: 'Measurement foundation',
+            label:
+              'with site-wide scroll depth tracking, anonymous reader identification across Django and Next.js, and the consent banner',
+          },
+        ],
+      },
+      {
+        period: '2022 · 2024',
+        title: 'Software Engineer',
+        highlights: [
+          {
+            value: 'Two weeks',
+            label:
+              'to build the redesigned MDLinx homepage frontend solo, from scratch, through a last-minute design pivot, meeting an industry awards deadline with my manager out the entire time',
+          },
+          { value: 'High six figures', label: 'in deals unlocked by an interactive chat product I spearheaded' },
+          {
+            value: 'Six figures',
+            label: 'of pre-sold sponsorship protected by shipping SmartestDoc v2 on a fixed February deadline',
+          },
+          { value: '10x', label: 'serverless cost reduction from a new caching strategy' },
+          {
+            value: 'Under an hour',
+            label:
+              'from a high-priority login bug report to a deployed hotfix, tracked down alone when no one else was online',
+          },
+          {
+            value: 'Four major upgrades',
+            label: 'across the Turborepo monorepo: Node 14 to 18, Next.js 11 to 13, React 17 to 18, TypeScript 4 to 5',
+          },
+          {
+            value: 'Foundations',
+            label:
+              'including a Contentful apps monorepo with CI/CD auto-deploys, the codebase’s first Playwright end-to-end tests, trunk-based development, and on-demand ISR through Contentful webhooks',
+          },
+        ],
+      },
     ],
     stack: [
       'TypeScript',
@@ -142,20 +221,27 @@ const Experience = () => (
               </div>
               <p className="mt-1 font-mono text-xs uppercase tracking-label text-muted">{role.meta}</p>
               <p className="mt-3 max-w-[68ch] text-sm leading-relaxed">{role.summary}</p>
-              {role.highlights && (
-                <ul className="mt-4 space-y-1.5">
-                  {role.highlights.map(highlight => (
-                    <li key={highlight.label} className="flex items-baseline gap-x-2.5 text-sm leading-relaxed">
-                      <span aria-hidden="true" className="text-signal">
-                        ▲
-                      </span>
-                      <span>
-                        <span className="whitespace-nowrap font-mono text-ink">{highlight.value}</span>{' '}
-                        {highlight.label}
-                      </span>
+              {role.highlights && <Highlights items={role.highlights} className="mt-4" />}
+              {role.stages && (
+                /* Promotions read as a rail: a hairline down the left, one dot per
+                   title, the current title lit in signal green. */
+                <ol className="mt-6 space-y-7 border-l border-line pl-6">
+                  {role.stages.map((stage, stageIndex) => (
+                    <li key={stage.title} className="relative">
+                      <span
+                        aria-hidden="true"
+                        className={`absolute top-[0.3rem] h-2.5 w-2.5 rounded-full ${
+                          stageIndex === 0 ? 'bg-signal ring-4 ring-signal/20' : 'border border-line-strong bg-canvas'
+                        }`}
+                        style={{ left: 'calc(-1.5rem - 0.3125rem - 0.5px)' }}
+                      />
+                      <p className="font-mono text-xs uppercase tracking-label text-muted">{stage.period}</p>
+                      <h4 className="mt-1 font-display text-base font-semibold text-ink">{stage.title}</h4>
+                      {stage.note && <p className="mt-1.5 max-w-[68ch] text-sm leading-relaxed">{stage.note}</p>}
+                      {stage.highlights && <Highlights items={stage.highlights} className="mt-2.5" />}
                     </li>
                   ))}
-                </ul>
+                </ol>
               )}
               {role.stack && (
                 <p className="mt-5 font-mono text-[0.7rem] uppercase tracking-label text-muted">

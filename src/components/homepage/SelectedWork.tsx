@@ -5,7 +5,6 @@ import Eyebrow from '../ui/Eyebrow';
 import Reveal from '../ui/Reveal';
 import { Tech } from '../ui/TechBadge';
 import TechChips from '../ui/TechChips';
-import StatTicker, { Stat } from './StatTicker';
 
 type Initiative = {
   period: string;
@@ -14,13 +13,6 @@ type Initiative = {
   impact: string;
   stack: string[];
 };
-
-const stats: Stat[] = [
-  { value: '7', label: 'Initiatives, end to end' },
-  { value: '90%', label: 'Fewer security findings' },
-  { value: '2x', label: 'Faster AI generation' },
-  { value: 'Hundreds', label: 'Players in week one' },
-];
 
 const initiatives: Initiative[] = [
   {
@@ -37,7 +29,7 @@ const initiatives: Initiative[] = [
     icon: ShieldCheck,
     impact:
       'Turned vulnerability cleanup into an operating program: swept every repo against a large npm supply-chain attack list, drove scanner adoption, and ran an upgrade loop that cut open findings by roughly 90%. A CLI I built enforces one PR per fix, with generated validation evidence, smoke-test reports, and a risk score on every PR.',
-    stack: ['Node.js', 'npm', 'Docker', 'GitHub Actions', 'GCP'],
+    stack: ['Node.js', 'npm', 'Docker', 'GitHub Actions', 'Aikido'],
   },
   {
     period: '2025',
@@ -97,10 +89,6 @@ const SelectedWork = () => (
         MDLinx is M3 USA&rsquo;s news and content site for physicians. Everything below I owned from spec to production
         and measured after launch, and most of it now runs without an engineer in the loop.
       </p>
-    </Reveal>
-
-    <Reveal delay={0.05} className="mt-10">
-      <StatTicker stats={stats} />
     </Reveal>
 
     <div className="mt-12 divide-y divide-line border-y border-line">

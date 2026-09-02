@@ -73,10 +73,13 @@ const Hero = () => (
         <div className="rise-frame mb-1 flex items-center gap-3 font-mono text-xs text-muted sm:mb-1.5">
           <span className="flex items-center gap-2">
             <span className="sc-heartbeat h-1.5 w-1.5 rounded-full bg-signal" />
-            pulse
+            Milestones at M3 USA
           </span>
           <span aria-hidden="true" className="h-px flex-1 bg-line/70" />
-          <span className="hidden sm:block">four years, thirteen beats</span>
+          {/* The hint appears only where hovering exists, so touch devices never get a dead instruction. */}
+          <span className="hidden [@media(min-width:640px)_and_(hover:hover)_and_(pointer:fine)]:block">
+            hover a beat for details
+          </span>
         </div>
         {/* Pinned right under the caption at a set height; the fold's leftover
             space below belongs to the scroll cue. The svg fills this box

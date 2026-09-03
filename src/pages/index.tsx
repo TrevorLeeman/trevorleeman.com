@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import Seo from '../components/seo/Seo';
 import Layout from '../components/layout/Layout';
 import Hero from '../components/homepage/Hero';
-import Flagship from '../components/homepage/Flagship';
+import SelectedWork from '../components/homepage/SelectedWork';
 import Experience from '../components/homepage/Experience';
 import TicTacToe from '../components/homepage/TicTacToe';
 import Approach from '../components/homepage/Approach';
@@ -13,7 +13,7 @@ const Homepage = () => (
   <>
     <Seo />
     <Hero />
-    <Flagship />
+    <SelectedWork />
     <Experience />
     <Approach />
     <About />

@@ -1,28 +1,20 @@
 import Head from 'next/head';
+import { GITHUB_URL, LINKEDIN_URL, M3_USA_URL, SITE_URL } from '../../lib/links';
 
-const SITE_URL = 'https://www.trevorleeman.com';
 const SITE_NAME = 'Trevor Leeman';
 const PERSON_NAME = 'Trevor Leeman';
-const JOB_TITLE = 'Full-Stack Software Engineer';
-const LINKEDIN_URL = 'https://www.linkedin.com/in/trevor-leeman/';
-const GITHUB_URL = 'https://github.com/TrevorLeeman';
-const OSRS_EXCHANGE_URL = 'https://www.osrs.exchange';
+const JOB_TITLE = 'Senior Software Engineer, Team Lead';
 
-const DEFAULT_TITLE = 'Trevor Leeman | Full-Stack Engineer & Founder of OSRS Exchange';
+const DEFAULT_TITLE = 'Trevor Leeman | Senior Software Engineer at M3 USA';
 const DEFAULT_DESCRIPTION =
-  'Full-stack software engineer in Seattle building OSRS Exchange, a real-time trading platform used by 40,000+ players monthly. React, Next.js, TypeScript, and UX obsession.';
+  'Senior Software Engineer and Team Lead at M3 USA, based in Seattle. I build the products physicians use on MDLinx: games, sponsored campaigns, experiments, and ads.';
 const DEFAULT_IMAGE_URL = `${SITE_URL}/og-image.png`;
 const DEFAULT_IMAGE_ALT =
-  'Dark dashboard-styled card with a rising market sparkline. The text reads: Trevor Leeman. I build market intelligence platforms, end to end. Founder of OSRS Exchange.';
+  'Dark card with a small green EKG pulse line. The text reads: Trevor Leeman. I build products for physicians, end to end. Senior Software Engineer, Team Lead at M3 USA.';
 
 const PERSON_ID = `${SITE_URL}/#person`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const WEBPAGE_ID = `${SITE_URL}/#webpage`;
-const ORGANIZATION_ID = `${OSRS_EXCHANGE_URL}/#organization`;
-const APPLICATION_ID = `${OSRS_EXCHANGE_URL}/#application`;
-
-const OSRS_EXCHANGE_DESCRIPTION =
-  'OSRS Exchange is a real-time Grand Exchange trading platform for Old School RuneScape, used by 40,000+ players every month. It turns live data from the OSRS Wiki Real-Time Prices API into actionable signals: real-time price tracking, high-margin flip finding, price alerts, recipe profit calculations, and Death’s Coffer valuations across 4,600+ tradeable items.';
 
 type JsonLd = Record<string, unknown>;
 
@@ -48,7 +40,7 @@ const personJsonLd: JsonLd = {
   jobTitle: JOB_TITLE,
   url: SITE_URL,
   description:
-    'Full-stack software engineer in Seattle, WA. Founder and sole engineer of OSRS Exchange, a real-time market data trading platform.',
+    'Senior Software Engineer and Team Lead at M3 USA, based in Seattle, WA. Builds the interactive products on MDLinx end to end, from content model and API through frontend, tracking, and release.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Seattle',
@@ -61,30 +53,29 @@ const personJsonLd: JsonLd = {
     'Next.js',
     'TypeScript',
     'Node.js',
-    'NestJS',
-    'Tailwind CSS',
+    'GraphQL',
+    'Django',
     'PostgreSQL',
+    'Contentful',
+    'Google Ad Manager',
+    'A/B testing',
+    'Google Cloud Platform',
+    'AWS',
+    'Terraform',
+    'Kubernetes',
     'Docker',
+    'Application security',
+    'Tailwind CSS',
     'UX design',
-    'Real-time market data',
     'AI-native development workflows',
     'Agentic coding tools',
   ],
-  worksFor: [{ '@id': ORGANIZATION_ID }, { '@type': 'Organization', name: 'M3 USA' }],
+  worksFor: { '@type': 'Organization', name: 'M3 USA', url: M3_USA_URL },
   alumniOf: [
     { '@type': 'CollegeOrUniversity', name: 'Central Washington University' },
     { '@type': 'CollegeOrUniversity', name: 'Everett Community College' },
   ],
   subjectOf: { '@id': WEBSITE_ID },
-};
-
-const organizationJsonLd: JsonLd = {
-  '@type': 'Organization',
-  '@id': ORGANIZATION_ID,
-  name: 'OSRS Exchange',
-  url: OSRS_EXCHANGE_URL,
-  description: OSRS_EXCHANGE_DESCRIPTION,
-  founder: { '@id': PERSON_ID },
 };
 
 const webSiteJsonLd: JsonLd = {
@@ -109,29 +100,9 @@ const webPageJsonLd: JsonLd = {
   about: { '@id': PERSON_ID },
 };
 
-const webApplicationJsonLd: JsonLd = {
-  '@type': 'WebApplication',
-  '@id': APPLICATION_ID,
-  name: 'OSRS Exchange',
-  url: OSRS_EXCHANGE_URL,
-  applicationCategory: 'FinanceApplication',
-  applicationSubCategory: 'Game market analysis',
-  browserRequirements: 'Requires a modern web browser.',
-  description: OSRS_EXCHANGE_DESCRIPTION,
-  featureList: [
-    'GE Tracker: real-time Grand Exchange price tracking and high-margin flip finder',
-    'Price Alerts: notifications when an item crosses a target price',
-    'Recipe Profit: live profitability calculator for crafting recipes',
-    'Death’s Coffer: value calculator for Death’s Coffer item sacrifices',
-  ],
-  author: { '@id': PERSON_ID },
-  creator: { '@id': PERSON_ID },
-  publisher: { '@id': ORGANIZATION_ID },
-};
-
 const structuredData: JsonLd = {
   '@context': 'https://schema.org',
-  '@graph': [personJsonLd, organizationJsonLd, webSiteJsonLd, webPageJsonLd, webApplicationJsonLd],
+  '@graph': [personJsonLd, webSiteJsonLd, webPageJsonLd],
 };
 
 const Seo = ({

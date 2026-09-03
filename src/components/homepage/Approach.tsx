@@ -1,26 +1,26 @@
-import { Broadcast, Lightning, Stack } from 'phosphor-react';
+import { FlowArrow, PencilLine, Stack } from 'phosphor-react';
 import Section from '../ui/Section';
 import Eyebrow from '../ui/Eyebrow';
 import Reveal from '../ui/Reveal';
 
 const pillars = [
   {
-    icon: Lightning,
-    title: 'UX before everything',
-    description:
-      'Traders make split-second decisions; the interface can’t be the bottleneck. I obsess over speed, hierarchy, and the details users feel but never notice.',
-  },
-  {
     icon: Stack,
-    title: 'Full-stack, end to end',
+    title: 'Own the whole thing',
     description:
-      'From schema design to pixel polish: React and Next.js frontends, NestJS APIs, Postgres data layers. One owner, no handoffs.',
+      'Spec, content model, API, frontend, tracking, QA, release, and the numbers afterward. On a launch I am the person with the whole picture, working across product, editorial, marketing, data, ad ops, and outside vendors.',
   },
   {
-    icon: Broadcast,
-    title: 'Runs in production',
+    icon: FlowArrow,
+    title: 'Make it self-serve',
     description:
-      'Self-hosting enthusiast with an IT background. Docker images, CI pipelines, Sentry on both ends. I ship it, monitor it, and keep it up.',
+      'A feature is done when product and editorial can run it without an engineer: self-serve experiments, content-configurable templates, an AI puzzle pipeline with human review. I leave every codebase easier to operate than I found it, from one-command dev startup to onboarding docs.',
+  },
+  {
+    icon: PencilLine,
+    title: 'Put the judgment in writing',
+    description:
+      'Trade-off analyses before big decisions, impact reports after incidents, and the same scrutiny for my own work. I have paused my own migration on complexity grounds and reversed my own schema design after finding a data-integrity flaw.',
   },
 ];
 

@@ -21,7 +21,8 @@ const About = () => (
         </h2>
         <p className="mt-6 max-w-2xl text-base leading-relaxed sm:text-lg">
           I run a homelab, self-host what I can, and believe the best products come from engineers who sweat both the
-          database and the drop shadow. Currently building OSRS Exchange.
+          database and the drop shadow. These days that means leading a team at M3 USA and building the products
+          physicians use on MDLinx.
         </p>
       </Reveal>
 

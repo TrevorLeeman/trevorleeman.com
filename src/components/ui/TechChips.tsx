@@ -38,6 +38,7 @@ const TechChips = ({ tech }: { tech: Tech[] }) => {
   return (
     <ul className="mt-4 flex list-none flex-wrap gap-2">
       {tech.map((item, index) => {
+        if (!item.icon) return <TechBadge key={item.label} label={item.label} />;
         const isOpen = open === index;
         return (
           <li key={item.label}>
